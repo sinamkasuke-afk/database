@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Facilities Reservation System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <main class="login-page">
+    <section class="left-side">
+      <div class="left-inner">
+        <img
+          src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png"
+          alt="NU Logo"
+          class="nu-logo"
+        >
+        <p class="school-name">NATIONAL UNIVERSITY MANILA</p>
+        <h1>
+          Facilities<br>
+          Reservation<br>
+          System
+        </h1>
+        <p class="portal-text">
+          Physical Facilities Management Office<br>
+          Official Portal
+        </p>
+        <div class="support-box">
+          <span class="support-line"></span>
+          <p>For assistance, contact the Physical Facilities Management Office.</p>
+        </div>
+      </div>
+      <div class="mascot-watermark"></div>
+    </section>
+    <section class="right-side">
+      <div class="gold-curve"></div>
+      <div class="form-card">
+        <div class="tabs">
+          <button class="tab active" type="button">Login</button>
+        </div>
+        <div class="form-head">
+          <h2>Welcome Back!</h2>
+          <p>Login to continue to your account</p>
+        </div>
+
+        <form class="login-form">
+          <label for="userType">User Type</label>
+          <div class="input-wrap">
+            <span class="input-icon">👥</span>
+            <select id="userType">
+              <option selected disabled>Select user type</option>
+              <option>Student</option>
+              <option>Employee</option>
+            </select>
+          </div>
+
+          <label for="email">Email Address</label>
+          <div class="input-wrap">
+            <span class="input-icon">✉️</span>
+            <input id="email" type="email" placeholder="Enter your email">
+          </div>
+
+          <label for="password">Password</label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input id="password" type="password" placeholder="Enter your password">
+            <button class="eye-btn" type="button" onclick="togglePassword()">👁</button>
+          </div>
+
+          <a href="#" class="forgot-link">Forgot password?</a>
+
+          <button class="login-btn" type="submit">Login</button>
+
+<div class="divider"><span>or</span></div>
+
+<a href="index.html" class="return-btn">← Return to Main Portal</a>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById('password');
+      password.type = password.type === 'password' ? 'text' : 'password';
+    }
+  </script>
+</body>
+</html>

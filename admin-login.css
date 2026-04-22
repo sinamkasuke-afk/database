@@ -1,0 +1,352 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+:root{
+  --blue:#042a7a;
+  --blue-dark:#032062;
+  --gold:#e1ad16;
+  --white:#ffffff;
+  --bg:#f2f4f8;
+  --card:#fbfbfc;
+  --text:#1f2d4d;
+  --muted:#64718d;
+  --border:#d9deea;
+}
+
+body{
+  font-family:"Inter",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+.admin-page{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1.05fr;
+}
+
+/* LEFT */
+.admin-left{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(rgba(4,42,122,.9),rgba(4,42,122,.9)),
+    url("nu-bg.png") center/cover no-repeat;
+}
+
+.left-overlay{
+  position:absolute;
+  inset:0;
+  background:rgba(2,25,80,.15);
+}
+
+.left-content{
+  position:relative;
+  z-index:2;
+  max-width:520px;
+  padding:36px 54px 42px;
+  color:var(--white);
+}
+
+.nu-logo{
+  width:96px;
+  display:block;
+  margin-bottom:32px;
+}
+
+.school-name{
+  color:#f2bf35;
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.12em;
+  margin-bottom:44px;
+}
+
+.admin-left h1{
+  font-family:"Merriweather",serif;
+  font-size:4rem;
+  line-height:1.05;
+  margin-bottom:26px;
+}
+
+.accent-line{
+  display:block;
+  width:88px;
+  height:4px;
+  border-radius:999px;
+  background:var(--gold);
+  margin-bottom:30px;
+}
+
+.left-text p{
+  font-size:1rem;
+  line-height:1.8;
+  font-weight:600;
+}
+
+.support{
+  margin-top:140px;
+  max-width:320px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+}
+
+.support-icon{
+  font-size:1.2rem;
+  line-height:1;
+  margin-top:2px;
+}
+
+.support p{
+  font-size:.98rem;
+  line-height:1.7;
+  color:#eef2ff;
+}
+
+/* RIGHT */
+.admin-right{
+  position:relative;
+  background:#f6f7fb;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:34px 34px 28px 110px;
+  overflow:hidden;
+}
+
+.curve{
+  position:absolute;
+  left:-18px;
+  top:-5%;
+  height:110%;
+  border-radius:0 200px 200px 0;
+}
+
+.curve-gold{
+  width:165px;
+  background:var(--gold);
+  z-index:1;
+}
+
+.curve-blue{
+  left:-2px;
+  width:128px;
+  background:var(--blue-dark);
+  z-index:2;
+}
+
+.login-card{
+  position:relative;
+  z-index:3;
+  width:100%;
+  max-width:600px;
+  background:var(--card);
+  border:1px solid #e4e7ef;
+  border-radius:26px;
+  box-shadow:0 12px 35px rgba(18,31,68,.08);
+  padding:34px 42px 30px;
+}
+
+.card-top-icon{
+  text-align:center;
+  font-size:3rem;
+  margin-bottom:12px;
+}
+
+.login-card h2{
+  text-align:center;
+  font-family:"Merriweather",serif;
+  color:#16327f;
+  font-size:2.2rem;
+  margin-bottom:10px;
+}
+
+.subtitle{
+  text-align:center;
+  color:var(--muted);
+  font-size:1rem;
+  margin-bottom:26px;
+}
+
+form label{
+  display:block;
+  font-size:.96rem;
+  font-weight:600;
+  color:#445270;
+  margin:16px 0 10px;
+}
+
+.input-group{
+  position:relative;
+}
+
+.input-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:1rem;
+  opacity:.8;
+}
+
+.input-group input{
+  width:100%;
+  height:56px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#fff;
+  padding:0 48px;
+  font-size:.98rem;
+  color:var(--text);
+  outline:none;
+}
+
+.input-group input:focus{
+  border-color:#3558b6;
+}
+
+.toggle-btn{
+  position:absolute;
+  right:14px;
+  top:50%;
+  transform:translateY(-50%);
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  font-size:1rem;
+}
+
+.form-row{
+  margin-top:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.remember{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:0;
+  font-weight:500;
+  color:#31405f;
+}
+
+.remember input{
+  width:18px;
+  height:18px;
+}
+
+.forgot-link{
+  color:#2446a5;
+  text-decoration:none;
+  font-size:.92rem;
+  font-weight:600;
+}
+
+.login-btn{
+  width:100%;
+  height:58px;
+  margin-top:26px;
+  border:none;
+  border-radius:14px;
+  background:#173f9e;
+  color:#fff;
+  font-size:1.08rem;
+  font-weight:800;
+  cursor:pointer;
+}
+
+.divider{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin:22px 0;
+  color:#7a849b;
+  font-size:.96rem;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#d6dbe6;
+}
+
+.return-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  height:56px;
+  border:2px solid #2348aa;
+  border-radius:14px;
+  color:#2348aa;
+  text-decoration:none;
+  font-size:1rem;
+  font-weight:700;
+  background:#fff;
+}
+
+.bottom-note{
+  position:relative;
+  z-index:3;
+  margin-top:28px;
+  color:#55637e;
+  font-size:1.02rem;
+  text-align:center;
+}
+
+/* RESPONSIVE */
+@media (max-width:1100px){
+  .admin-page{
+    grid-template-columns:1fr;
+  }
+
+  .admin-left{
+    min-height:420px;
+  }
+
+  .support{
+    margin-top:56px;
+  }
+
+  .admin-right{
+    padding:28px 18px 24px;
+  }
+
+  .curve{
+    display:none;
+  }
+}
+
+@media (max-width:640px){
+  .left-content{
+    padding:28px 22px 30px;
+  }
+
+  .admin-left h1{
+    font-size:2.8rem;
+  }
+
+  .login-card{
+    padding:24px 18px 22px;
+    border-radius:18px;
+  }
+
+  .form-row{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+
+  .bottom-note{
+    font-size:.92rem;
+  }
+}

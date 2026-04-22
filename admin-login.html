@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Login - Facilities Reservation System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-login.css" />
+</head>
+<body>
+  <main class="admin-page">
+    <section class="admin-left">
+      <div class="left-overlay"></div>
+
+      <div class="left-content">
+        <img
+          src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png"
+          alt="NU Logo"
+          class="nu-logo"
+        >
+
+        <p class="school-name">NATIONAL UNIVERSITY MANILA</p>
+
+        <h1>Admin<br>Login</h1>
+
+        <span class="accent-line"></span>
+
+        <div class="left-text">
+          <p>Facilities Reservation System</p>
+          <p>Physical Facilities Management Office</p>
+        </div>
+
+        <div class="support">
+          <span class="support-icon">🎧</span>
+          <p>For assistance, contact the Physical Facilities Management Office.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-right">
+      <div class="curve curve-gold"></div>
+      <div class="curve curve-blue"></div>
+
+      <div class="login-card">
+        <div class="card-top-icon">🔒</div>
+
+        <h2>Admin Login</h2>
+        <p class="subtitle">Please sign in to continue to your admin account</p>
+
+        <form>
+          <label for="admin-email">Email Address</label>
+          <div class="input-group">
+            <span class="input-icon">✉️</span>
+            <input id="admin-email" type="email" placeholder="Enter your admin email">
+          </div>
+
+          <label for="admin-password">Password</label>
+          <div class="input-group">
+            <span class="input-icon">🔒</span>
+            <input id="admin-password" type="password" placeholder="Enter your password">
+            <button type="button" class="toggle-btn" onclick="togglePassword()">👁</button>
+          </div>
+
+          <div class="form-row">
+            <label class="remember">
+              <input type="checkbox">
+              <span>Remember me</span>
+            </label>
+
+            <a href="#" class="forgot-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+
+          <div class="divider"><span>or</span></div>
+
+          <a href="index.html" class="return-btn">Return to Main Portal</a>
+        </form>
+      </div>
+
+      <p class="bottom-note">🔐 Secure admin access. Unauthorized access is prohibited.</p>
+    </section>
+  </main>
+
+  <script>
+    function togglePassword() {
+      const password = document.getElementById("admin-password");
+      password.type = password.type === "password" ? "text" : "password";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,383 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-dark: #022a7a;
+  --blue-mid: #0a327f;
+  --gold: #e0ad14;
+  --text: #1f2c4d;
+  --muted: #68748f;
+  --line: #d8dce6;
+  --card: #f8f8fb;
+  --white: #ffffff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: #eef1f7;
+  color: var(--text);
+}
+
+.login-page {
+  width: min(1280px, calc(100% - 28px));
+  min-height: 92vh;
+  margin: 20px auto;
+  background: var(--white);
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1.08fr;
+  box-shadow: 0 10px 28px rgba(18, 32, 70, 0.12);
+}
+
+/* LEFT */
+.left-side {
+  position: relative;
+  background: linear-gradient(180deg, #002978 0%, #032b78 100%);
+  overflow: hidden;
+}
+
+.left-inner {
+  position: relative;
+  z-index: 2;
+  padding: 34px 48px 38px 52px;
+  max-width: 470px;
+}
+
+.nu-logo {
+  width: 92px;
+  display: block;
+  margin-bottom: 30px;
+}
+
+.school-name {
+  color: #e7b73b;
+  font-size: 0.82rem;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  margin-bottom: 34px;
+}
+
+.left-side h1 {
+  font-family: "Merriweather", serif;
+  color: #ffffff;
+  font-size: 4rem;
+  line-height: 1.06;
+  margin-bottom: 26px;
+}
+
+.portal-text {
+  color: #ffffff;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.support-box {
+  margin-top: 96px;
+  max-width: 290px;
+}
+
+.support-line {
+  display: block;
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--gold);
+  margin-bottom: 18px;
+}
+
+.support-box p {
+  color: #eef3ff;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.mascot-watermark {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(2, 42, 122, 0.52), rgba(2, 42, 122, 0.52)),
+    url("nu-bg.png") center center / cover no-repeat;
+  opacity: 0.28;
+  z-index: 1;
+}
+
+/* RIGHT */
+.right-side {
+  position: relative;
+  background: #f7f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 34px 34px 34px 110px;
+  overflow: hidden;
+}
+
+.gold-curve {
+  position: absolute;
+  left: -18px;
+  top: -40px;
+  width: 190px;
+  height: calc(100% + 80px);
+  background: var(--gold);
+  border-radius: 0 120px 120px 0;
+  z-index: 1;
+}
+
+.gold-curve::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 0;
+  width: 160px;
+  height: 100%;
+  background: #06296f;
+  border-radius: 0 120px 120px 0;
+}
+
+.form-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 560px;
+  background: #fbfbfc;
+  border-radius: 22px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+  padding: 28px 30px 30px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  border-bottom: 1px solid #d6dae5;
+  margin-bottom: 28px;
+}
+
+.tab {
+  border: none;
+  background: transparent;
+  color: #747d95;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 2px 8px 14px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.tab.active {
+  color: #1f3b8f;
+  border-bottom-color: var(--gold);
+}
+
+/* FORM HEAD */
+.form-head {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.form-head h2 {
+  font-family: "Merriweather", serif;
+  font-size: 2rem;
+  color: #1c2f61;
+  margin-bottom: 10px;
+}
+
+.form-head p {
+  color: var(--muted);
+  font-size: 0.98rem;
+}
+
+/* FORM */
+.login-form label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #4f5a78;
+  margin-bottom: 10px;
+  margin-top: 16px;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+input,
+select {
+  width: 100%;
+  height: 52px;
+  border: 1px solid #d7dbe5;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0 44px;
+  font-size: 0.96rem;
+  color: #243250;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: #3557b8;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.95rem;
+  opacity: 0.7;
+}
+
+.forgot-link {
+  display: block;
+  margin-top: 10px;
+  text-align: right;
+  color: #3d4ea0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.login-btn {
+  width: 100%;
+  height: 56px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 999px;
+  background: var(--gold);
+  color: #1c2a4a;
+  font-size: 1.05rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 22px 0 16px;
+  color: #7b8499;
+  font-size: 0.92rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #d7dbe4;
+}
+
+.register-text {
+  text-align: center;
+  color: #68748f;
+  font-size: 0.96rem;
+}
+
+.register-text a {
+  color: #2446a5;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .left-side {
+    min-height: 420px;
+  }
+
+  .left-inner {
+    max-width: 100%;
+  }
+
+  .right-side {
+    padding: 28px 20px;
+  }
+
+  .gold-curve {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .login-page {
+    width: min(100%, calc(100% - 16px));
+    margin: 8px auto;
+  }
+
+  .left-inner {
+    padding: 28px 22px 30px;
+  }
+
+  .left-side h1 {
+    font-size: 2.6rem;
+  }
+
+  .support-box {
+    margin-top: 46px;
+  }
+
+  .form-card {
+    padding: 22px 16px 24px;
+    border-radius: 16px;
+  }
+
+  .tabs {
+    gap: 28px;
+  }
+}
+portal.css
+.divider{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:18px 0;
+  color:#888;
+  font-size:.9rem;
+}
+
+.divider::before,
+.divider::after{
+  content:"";
+  flex:1;
+  height:1px;
+  background:#ddd;
+}
+
+.return-btn{
+  display:block;
+  text-align:center;
+  padding:12px;
+  border:2px solid #1f3f96;
+  border-radius:25px;
+  color:#1f3f96;
+  font-weight:600;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.return-btn:hover{
+  background:#1f3f96;
+  color:#fff;
+}

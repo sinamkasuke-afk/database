@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilities Reservation System</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+titeeeeee
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+
+    <div class="brand">
+      <img src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png">
+      <span>NATIONAL UNIVERSITY MANILA</span>
+    </div>
+    <div class="help-container">
+      <button class="help-btn" onclick="toggleHelp()">Help?</button>
+      <div class="help-box" id="helpBox">
+
+        <h3>Help & Support</h3>
+        <p class="small">How can we help you?</p>
+
+        <div class="help-item">
+          <strong>User Guide</strong>
+          <span>Learn how to use the system</span>
+        </div>
+
+        <div class="help-item">
+          <strong>FAQs</strong>
+          <span>Frequently asked questions</span>
+        </div>
+
+        <div class="help-item">
+          <strong>Contact Support</strong>
+          <span>Get in touch with our team</span>
+        </div>
+
+        <div class="help-item">
+          <strong>About System</strong>
+          <span>Learn more about this portal</span>
+        </div>
+
+        <button class="close-btn" onclick="toggleHelp()">Close</button>
+
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-content">
+
+    <img class="hero-logo" src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png">
+
+    <p class="tag">NATIONAL UNIVERSITY MANILA</p>
+
+    <h1>Facilities Reservation System</h1>
+
+    <p class="sub">Physical Facilities Management Office — Official Portal</p>
+
+  </div>
+</section>
+
+<main class="container main">
+  <section class="cards">
+
+    <div class="card">
+      <div class="line"></div>
+      <h2>Student</h2>
+      <p>Submit venue reservation requests for events, seminars, and academic activities.</p>
+      <a href="login.html" class="btn outline">Login / Register</a>
+    </div>
+
+    <div class="card">
+      <div class="line"></div>
+      <h2>Admin</h2>
+      <p>Manage reservations, review requests, approve schedules, and monitor facility availability.</p>
+      <a href="admin-login.html" class="btn solid">Admin Portal</a>
+    </div>
+
+  </section>
+</main>
+
+<footer class="footer">
+  <p>For assistance, contact the Physical Facilities Management Office.</p>
+</footer>
+
+<script>
+function toggleHelp(){
+  const box = document.getElementById("helpBox");
+  box.classList.toggle("show");
+}
+</script>
+
+</body>
+</html>
