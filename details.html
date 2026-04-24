@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservation Details</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="details.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-logo">NU</div>
+        <div class="brand-text">
+          <h1>National University Manila</h1>
+          <p>FACILITIES RESERVATION SYSTEM</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+        <a href="#" class="btn btn-outline">My Requests</a>
+
+        <div class="user-box">
+          <div class="avatar">MS</div>
+          <div class="user-info">
+            <strong>Maria S.</strong>
+            <span>Student Organization Officer</span>
+          </div>
+        </div>
+
+        <a href="index.html" class="btn btn-outline">Sign Out</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="page-head">
+      <h2>New Reservation</h2>
+
+      <div class="step-top">
+        <div class="step done"><span>1</span><p>Venue &amp; Date</p></div>
+        <div class="line active-line"></div>
+        <div class="step active"><span>2</span><p>Details</p></div>
+        <div class="line"></div>
+        <div class="step"><span>3</span><p>Review</p></div>
+      </div>
+    </div>
+
+    <div class="page-layout">
+      <aside class="sidebar-steps">
+        <div class="side-step done">
+          <div class="circle done-circle">✓</div>
+          <div>
+            <h3>Venue &amp; Date</h3>
+            <p>Venue and schedule selected</p>
+          </div>
+        </div>
+
+        <div class="side-line active-side-line"></div>
+
+        <div class="side-step active">
+          <div class="circle">2</div>
+          <div>
+            <h3>Details</h3>
+            <p>Provide event<br>information</p>
+          </div>
+        </div>
+
+        <div class="side-line"></div>
+
+        <div class="side-step">
+          <div class="circle muted">3</div>
+          <div>
+            <h3>Review</h3>
+            <p>Confirm and submit<br>your reservation</p>
+          </div>
+        </div>
+      </aside>
+
+      <section class="content">
+        <section class="card">
+          <div class="card-head">
+            <div class="num">2</div>
+            <div>
+              <h3>Reservation Details</h3>
+              <p>Provide complete information for your request.</p>
+            </div>
+          </div>
+
+          <div class="summary-bar">
+            <div class="summary-item">
+              <span class="label">Venue</span>
+              <strong>Amphitheater</strong>
+            </div>
+            <div class="summary-item">
+              <span class="label">Date</span>
+              <strong>Mon, April 6, 2026</strong>
+            </div>
+            <div class="summary-item">
+              <span class="label">Time</span>
+              <strong>7:00 AM - 10:00 AM</strong>
+            </div>
+          </div>
+
+          <form class="details-form">
+            <div class="form-grid two">
+              <div class="field">
+                <label for="eventName">Event Name</label>
+                <input id="eventName" type="text" placeholder="Enter event name">
+              </div>
+
+              <div class="field">
+                <label for="organization">Organization / Department</label>
+                <input id="organization" type="text" placeholder="Enter organization or department">
+              </div>
+            </div>
+
+            <div class="form-grid two">
+              <div class="field">
+                <label for="eventType">Event Type</label>
+                <select id="eventType">
+                  <option selected disabled>Select event type</option>
+                  <option>Seminar</option>
+                  <option>Workshop</option>
+                  <option>Orientation</option>
+                  <option>Meeting</option>
+                  <option>Program</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="expectedGuests">Expected No. of Attendees</label>
+                <input id="expectedGuests" type="number" placeholder="Enter number of attendees">
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="purpose">Purpose of Event</label>
+              <textarea id="purpose" rows="4" placeholder="State the purpose of your reservation"></textarea>
+            </div>
+
+            <div class="form-grid three">
+              <div class="field">
+                <label for="contactPerson">Contact Person</label>
+                <input id="contactPerson" type="text" placeholder="Enter contact person">
+              </div>
+
+              <div class="field">
+                <label for="contactEmail">Email Address</label>
+                <input id="contactEmail" type="email" placeholder="Enter email address">
+              </div>
+
+              <div class="field">
+                <label for="contactNumber">Contact Number</label>
+                <input id="contactNumber" type="text" placeholder="Enter mobile number">
+              </div>
+            </div>
+
+            <div class="divider-title">
+              <h4>Facility Requirements</h4>
+              <p>Select the items and setup needed for the event.</p>
+            </div>
+
+            <div class="requirements-grid">
+              <label class="check-item"><input type="checkbox"> Chairs</label>
+              <label class="check-item"><input type="checkbox"> Tables</label>
+              <label class="check-item"><input type="checkbox"> Sound System</label>
+              <label class="check-item"><input type="checkbox"> Projector</label>
+              <label class="check-item"><input type="checkbox"> Microphones</label>
+              <label class="check-item"><input type="checkbox"> Extension Wires</label>
+            </div>
+
+            <div class="field">
+              <label for="setupNotes">Additional Setup Notes</label>
+              <textarea id="setupNotes" rows="4" placeholder="Describe the preferred setup, layout, or other requests"></textarea>
+            </div>
+
+            <div class="upload-box">
+              <div>
+                <h4>Attach Supporting Document</h4>
+                <p>Upload program flow, request letter, or related file if available.</p>
+              </div>
+              <label class="upload-btn">
+                Choose File
+                <input type="file" hidden>
+              </label>
+            </div>
+
+            <div class="agreement-box">
+              <label>
+                <input type="checkbox">
+                I confirm that the information provided is complete and correct, and I agree to follow the venue usage rules of National University Manila.
+              </label>
+            </div>
+          </form>
+        </section>
+
+        <div class="page-actions">
+          <a href="new-reservation.html" class="cancel-btn">← Back</a>
+          <a href="review.html" class="next-btn">Next →</a>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
