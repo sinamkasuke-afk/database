@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservation Requests</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="school-brand">
+        <img src="nu-logo.png" alt="NU Logo" class="nu-logo">
+          <div class="school-text">
+            <h1>NATIONAL<br>UNIVERSITY<br>MANILA</h1>
+            <p>FACILITIES RESERVATION SYSTEM</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-line"></div>
+
+      <nav class="sidebar-menu">
+        <a href="dashboard.html" class="menu-item">
+          <i class='bx bxs-home'></i>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="reservation.html" class="menu-item active">
+          <i class='bx bx-calendar'></i>
+          <span>Reservation Requests</span>
+        </a>
+
+        <a href="admin-login.html" class="menu-item">
+          <i class='bx bx-log-out'></i>
+          <span>Logout</span>
+        </a>
+      </nav>
+
+      </nav>
+
+      <div class="sidebar-watermark">
+        <i class='bx bxs-shield-alt-2'></i>
+      </div>
+      <div class="sidebar-bulldog">
+         <img src="bulldog.png" alt="NU Bulldog">
+      </div>
+
+      <div class="sidebar-contact">
+        <h3>PFMO Contact</h3>
+
+        <div class="contact-item">
+          <i class='bx bx-phone'></i>
+          <span>(02) 8527-4630 loc. 113</span>
+        </div>
+
+        <div class="contact-item">
+          <i class='bx bx-envelope'></i>
+          <span>pfmo@nu.edu.ph</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="welcome-text">
+          <h2>Welcome, Admin!</h2>
+          <p>Physical Facilities Management Office</p>
+        </div>
+
+        <div class="admin-profile">
+          <div class="admin-avatar">A</div>
+          <div class="admin-info">
+            <h4>Admin User</h4>
+            <p>Administrator</p>
+          </div>
+          <i class='bx bx-chevron-down'></i>
+        </div>
+      </header>
+
+      <!-- PAGE CONTENT -->
+      <section class="dashboard-content">
+        <div class="reservation-top">
+          <div class="section-card">
+            <div class="section-icon">
+              <i class='bx bx-calendar'></i>
+            </div>
+
+            <div class="section-text">
+              <h3>Reservation Requests</h3>
+              <p>Manage and review all facility reservation requests.</p>
+            </div>
+          </div>
+
+          <div class="search-area">
+            <i class='bx bx-search'></i>
+            <input type="text" placeholder="Search request ID, requester, or venue..." />
+          </div>
+        </div>
+
+        <div class="table-wrapper reservation-table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>REQUEST ID</th>
+                <th>REQUESTER</th>
+                <th>VENUE</th>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>STATUS</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>REQ-2026-0012</td>
+                <td>
+                  <strong>Juan Dela Cruz</strong><br>
+                  <span>Student</span>
+                </td>
+                <td>Amphitheater</td>
+                <td>April 6, 2026</td>
+                <td>7:00 AM - 10:00 AM</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="approve-btn">Approve</button>
+                    <button class="decline-btn">Decline</button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0011</td>
+                <td>
+                  <strong>Maria Santos</strong><br>
+                  <span>Employee</span>
+                </td>
+                <td>Conference Room A</td>
+                <td>April 7, 2026</td>
+                <td>1:00 PM - 4:00 PM</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="approve-btn">Approve</button>
+                    <button class="decline-btn">Decline</button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0010</td>
+                <td>
+                  <strong>Mark Reyes</strong><br>
+                  <span>Student</span>
+                </td>
+                <td>Audio Visual Room</td>
+                <td>April 8, 2026</td>
+                <td>9:00 AM - 12:00 PM</td>
+                <td><span class="status approved">Approved</span></td>
+                <td class="dash-cell">-</td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0009</td>
+                <td>
+                  <strong>Anna Garcia</strong><br>
+                  <span>Employee</span>
+                </td>
+                <td>Amphitheater</td>
+                <td>April 5, 2026</td>
+                <td>2:00 PM - 6:00 PM</td>
+                <td><span class="status approved">Approved</span></td>
+                <td class="dash-cell">-</td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0008</td>
+                <td>
+                  <strong>Luis Mendoza</strong><br>
+                  <span>Student</span>
+                </td>
+                <td>Practice Court</td>
+                <td>April 4, 2026</td>
+                <td>8:00 AM - 10:00 AM</td>
+                <td><span class="status declined">Declined</span></td>
+                <td class="dash-cell">-</td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0007</td>
+                <td>
+                  <strong>Sofia Ramirez</strong><br>
+                  <span>Student</span>
+                </td>
+                <td>Function Room</td>
+                <td>April 10, 2026</td>
+                <td>10:00 AM - 2:00 PM</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="approve-btn">Approve</button>
+                    <button class="decline-btn">Decline</button>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>REQ-2026-0006</td>
+                <td>
+                  <strong>Miguel Tan</strong><br>
+                  <span>Employee</span>
+                </td>
+                <td>Conference Room B</td>
+                <td>April 9, 2026</td>
+                <td>3:00 PM - 5:00 PM</td>
+                <td><span class="status pending">Pending</span></td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="approve-btn">Approve</button>
+                    <button class="decline-btn">Decline</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© 2026 National University Manila</p>
+        <p>Physical Facilities Management Office</p>
+      </footer>
+    </main>
+  </div>
+</body>
+</html>

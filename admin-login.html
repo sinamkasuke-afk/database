@@ -49,7 +49,9 @@
         <h2>Admin Login</h2>
         <p class="subtitle">Please sign in to continue to your admin account</p>
 
-        <form>
+        <!-- ✅ ADDED onsubmit -->
+        <form onsubmit="return adminLogin()">
+
           <label for="admin-email">Email Address</label>
           <div class="input-group">
             <span class="input-icon">✉️</span>
@@ -88,6 +90,22 @@
     function togglePassword() {
       const password = document.getElementById("admin-password");
       password.type = password.type === "password" ? "text" : "password";
+    }
+
+    // ✅ ADDED LOGIN CONNECTION
+    function adminLogin() {
+      const email = document.getElementById("admin-email").value.trim();
+      const password = document.getElementById("admin-password").value.trim();
+
+      if (!email || !password) {
+        alert("Please fill in all fields.");
+        return false;
+      }
+
+      // 🔥 REDIRECT TO DASHBOARD
+      window.location.href = "dashboard.html";
+
+      return false; // prevent reload
     }
   </script>
 </body>
