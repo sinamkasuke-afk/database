@@ -4,11 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Facilities Reservation System</title>
+
+  <!-- CHANGED FONT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="login.css">
 </head>
+
 <body>
   <main class="login-page">
     <section class="left-side">
@@ -18,41 +22,48 @@
           alt="NU Logo"
           class="nu-logo"
         >
+
         <p class="school-name">NATIONAL UNIVERSITY MANILA</p>
+
         <h1>
           Facilities<br>
           Reservation<br>
           System
         </h1>
+
         <p class="portal-text">
           Physical Facilities Management Office<br>
           Official Portal
         </p>
+
         <div class="support-box">
           <span class="support-line"></span>
           <p>For assistance, contact the Physical Facilities Management Office.</p>
         </div>
       </div>
+
       <div class="mascot-watermark"></div>
     </section>
+
     <section class="right-side">
       <div class="gold-curve"></div>
+
       <div class="form-card">
         <div class="tabs">
           <button class="tab active" type="button">Login</button>
         </div>
+
         <div class="form-head">
           <h2>Welcome Back!</h2>
           <p>Login to continue to your account</p>
         </div>
 
-        <!-- ONLY CHANGE IS HERE -->
-        <form class="login-form" action="details.html">
+        <form class="login-form" action="new-reservation.html">
+
           <label for="userType">User Type</label>
           <div class="input-wrap">
-            <span class="input-icon">👥</span>
-            <select id="userType">
-              <option selected disabled>Select user type</option>
+            <select id="userType" required>
+              <option selected disabled value="">Select user type</option>
               <option>Student</option>
               <option>Employee</option>
             </select>
@@ -60,14 +71,12 @@
 
           <label for="email">Email Address</label>
           <div class="input-wrap">
-            <span class="input-icon">✉️</span>
-            <input id="email" type="email" placeholder="Enter your email">
+            <input id="email" type="email" placeholder="Enter your email" required>
           </div>
 
           <label for="password">Password</label>
           <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input id="password" type="password" placeholder="Enter your password">
+            <input id="password" type="password" placeholder="Enter your password" required>
             <button class="eye-btn" type="button" onclick="togglePassword()">👁</button>
           </div>
 

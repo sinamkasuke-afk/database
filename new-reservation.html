@@ -7,38 +7,41 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="new-reservation.css">
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <div class="brand-logo">NU</div>
-        <div class="brand-text">
-          <h1>National University Manila</h1>
-          <p>FACILITIES RESERVATION SYSTEM</p>
-        </div>
-      </div>
+ <header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="nu-logo.png" alt="NU Logo" class="brand-logo-img">
 
-      <div class="top-actions">
-        <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
-        <a href="#" class="btn btn-outline">My Requests</a>
-
-        <div class="user-box">
-          <div class="avatar">MS</div>
-          <div class="user-info">
-            <strong>Maria S.</strong>
-            <span>Student Organization Officer</span>
-          </div>
-        </div>
-
-        <a href="login.html" class="btn btn-outline">Sign Out</a>
+      <div class="brand-text">
+        <h1 class="nu-title">NATIONAL UNIVERSITY</h1>
+        <p class="nu-sub">FACILITIES RESERVATION SYSTEM</p>
       </div>
     </div>
-  </header>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+    <div class="top-actions" id="topActions">
+      <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+      <a href="#" class="btn btn-outline">My Requests</a>
+
+      <div class="user-box">
+        <div class="avatar">MS</div>
+        <div class="user-info">
+          <strong>Maria S.</strong>
+          <span>Student Organization Officer</span>
+        </div>
+      </div>
+
+      <a href="login.html" class="btn btn-outline">Sign Out</a>
+    </div>
+  </div>
+</header>
 
   <main class="page">
     <div class="page-head">
@@ -157,46 +160,49 @@
               </div>
             </div>
 
-            <div>
-              <div class="venue-preview">
-                <div>
-                  <div class="preview-title">
-                    <div class="preview-icon">A</div>
-                    <div>
-                      <h4>Amphitheater</h4>
-                      <span class="tag">Outdoor Venue</span>
-                    </div>
-                  </div>
+            <div class="venue-preview">
 
-                  <p class="preview-desc">
-                    Open-air venue ideal for large gatherings, presentations, and performances.
-                  </p>
+  <div class="preview-image">
+    <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80" alt="Venue photo">
+      
+    <!-- ADD THIS -->
+  <div class="preview-overlay-top">
+    <div class="preview-icon">A</div>
+    <div>
+      <h4>Amphitheater</h4>
+      <span class="tag">Outdoor Venue</span>
+    </div>
+  </div>
 
-                  <div class="preview-meta">
-                    <div>
-                      <strong>Capacity</strong>
-                      <span>2,000 pax</span>
-                    </div>
+    <button class="gallery-btn">View Gallery</button>
+  </div>
 
-                    <div>
-                      <strong>Location</strong>
-                      <span>Main Campus</span>
-                    </div>
+  <div class="preview-details">
+    <p class="preview-desc">
+      Open-air venue ideal for large gatherings, presentations, and performances.
+    </p>
 
-                    <div>
-                      <strong>Features</strong>
-                      <span>Stage, Sound System, Lighting, Open Seating</span>
-                    </div>
-                  </div>
+    <div class="preview-meta">
+      <div>
+        <strong>Capacity</strong>
+        <span>2,000 pax</span>
+      </div>
 
-                  <button class="small-btn">View Layout</button>
-                </div>
+      <div>
+        <strong>Location</strong>
+        <span>Main Campus</span>
+      </div>
 
-                <div class="preview-image">
-                  <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=900&q=80" alt="Venue photo">
-                  <button class="gallery-btn">View Gallery</button>
-                </div>
-              </div>
+      <div>
+        <strong>Features</strong>
+        <span>Stage, Sound System, Lighting, Open Seating</span>
+      </div>
+    </div>
+
+    <button class="small-btn">View Layout</button>
+  </div>
+
+</div>
 
               <div class="note-box">
                 <strong>Note:</strong> Submit this form together with the layout of the venue (if applicable) to the Physical Facilities Management Office.
@@ -338,6 +344,26 @@
       </section>
     </div>
   </main>
+<script>
+  const days = document.querySelectorAll(".days span");
+  const selectedDate = document.querySelector(".selected-date h4");
 
+  days.forEach(day => {
+    day.addEventListener("click", () => {
+      if (day.classList.contains("muted")) return;
+
+      days.forEach(d => d.classList.remove("selected-day"));
+      day.classList.add("selected-day");
+
+      selectedDate.textContent = "April " + day.textContent + ", 2026";
+    });
+  });
+</script>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("topbar").classList.toggle("open");
+  }
+</script>
 </body>
 </html>
