@@ -94,3 +94,9 @@ h1{
   border:2px solid #17327b;
   color:#17327b;
 }
+
+.ticket-text{
+  margin-top:10px;
+  font-size:14px;
+  color:#555;
+}

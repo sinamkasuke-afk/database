@@ -41,17 +41,12 @@ a{text-decoration:none}
   gap:14px;
 }
 
-.brand-logo{
+
+/* 🔥 REPLACED LOGO STYLE */
+.brand-logo-img{
   width:42px;
   height:42px;
-  border-radius:50%;
-  border:2px solid var(--gold);
-  color:var(--gold);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-family:Merriweather,serif;
-  font-weight:700;
+  object-fit:contain;
 }
 
 .brand-text h1{
