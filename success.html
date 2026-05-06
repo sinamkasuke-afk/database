@@ -68,17 +68,17 @@
 
       <div class="summary-row">
         <span>Venue</span>
-        <strong>Amphitheater</strong>
+        <strong id="successVenue">Amphitheater</strong>
       </div>
 
       <div class="summary-row">
         <span>Date</span>
-        <strong>April 6, 2026</strong>
+        <strong id="successDate">April 6, 2026</strong>
       </div>
 
       <div class="summary-row">
         <span>Time</span>
-        <strong>7:00 AM - 10:00 AM</strong>
+        <strong id="successTime">7:00 AM - 10:00 AM</strong>
       </div>
     </div>
 
@@ -95,6 +95,16 @@
 
 <!-- ✅ REQUIRED SCRIPT (for ☰ to work) -->
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const venue = localStorage.getItem("reservationVenue");
+  const date = localStorage.getItem("reservationDate");
+  const time = localStorage.getItem("reservationTime");
+
+  if (venue) document.getElementById("successVenue").textContent = venue;
+  if (date) document.getElementById("successDate").textContent = date;
+  if (time) document.getElementById("successTime").textContent = time;
+});
+
 function toggleMenu() {
   document.getElementById("topbar").classList.toggle("open");
 }

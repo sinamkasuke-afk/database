@@ -101,15 +101,15 @@
         <div class="summary-bar">
           <div class="summary-item">
             <span class="label">Venue</span>
-            <strong>Amphitheater</strong>
+            <strong id="detailsVenue">Amphitheater</strong>
           </div>
           <div class="summary-item">
             <span class="label">Date</span>
-            <strong>Mon, April 6, 2026</strong>
+            <strong id="detailsDate">April 6, 2026</strong>
           </div>
           <div class="summary-item">
             <span class="label">Time</span>
-            <strong>7:00 AM - 10:00 AM</strong>
+            <strong id="detailsTime">7:00 AM - 10:00 AM</strong>
           </div>
         </div>
 
@@ -173,12 +173,12 @@
           </div>
 
           <div class="requirements-grid">
-            <label class="check-item"><input type="checkbox"> Chairs</label>
-            <label class="check-item"><input type="checkbox"> Tables</label>
-            <label class="check-item"><input type="checkbox"> Sound System</label>
-            <label class="check-item"><input type="checkbox"> Projector</label>
-            <label class="check-item"><input type="checkbox"> Microphones</label>
-            <label class="check-item"><input type="checkbox"> Extension Wires</label>
+            <label class="check-item"><input type="checkbox" value="Chairs"> Chairs</label>
+            <label class="check-item"><input type="checkbox" value="Tables"> Tables</label>
+            <label class="check-item"><input type="checkbox" value="Sound System"> Sound System</label>
+            <label class="check-item"><input type="checkbox" value="Projector"> Projector</label>
+            <label class="check-item"><input type="checkbox" value="Microphones"> Microphones</label>
+            <label class="check-item"><input type="checkbox" value="Extension Wires"> Extension Wires</label>
           </div>
 
           <div class="field">
@@ -193,13 +193,13 @@
             </div>
             <label class="upload-btn">
               Choose File
-              <input type="file" hidden>
+              <input id="supportingDocument" type="file" hidden>
             </label>
           </div>
 
           <div class="agreement-box">
             <label>
-              <input type="checkbox">
+              <input id="agreementCheck" type="checkbox">
               I confirm that the information provided is complete and correct, and I agree to follow the venue usage rules of National University Manila.
             </label>
           </div>
@@ -208,7 +208,7 @@
 
       <div class="page-actions">
         <a href="new-reservation.html" class="cancel-btn">← Back</a>
-        <a href="review.html" class="next-btn">Next →</a>
+        <a href="review.html" class="next-btn" id="detailsNextBtn">Next →</a>
       </div>
     </section>
   </div>
@@ -220,15 +220,41 @@ document.addEventListener("DOMContentLoaded", function () {
   const date = localStorage.getItem("reservationDate");
   const time = localStorage.getItem("reservationTime");
 
-  const summaryItems = document.querySelectorAll(".summary-item");
+  if (venue) document.getElementById("detailsVenue").textContent = venue;
+  if (date) document.getElementById("detailsDate").textContent = date;
+  if (time) document.getElementById("detailsTime").textContent = time;
 
-  summaryItems.forEach(item => {
-    const label = item.querySelector(".label").textContent.trim().toLowerCase();
-    const value = item.querySelector("strong");
+  document.getElementById("detailsNextBtn").addEventListener("click", function (e) {
+    const eventName = document.getElementById("eventName").value;
+    const organization = document.getElementById("organization").value;
+    const eventType = document.getElementById("eventType").value;
+    const expectedGuests = document.getElementById("expectedGuests").value;
+    const purpose = document.getElementById("purpose").value;
+    const contactPerson = document.getElementById("contactPerson").value;
+    const contactEmail = document.getElementById("contactEmail").value;
+    const contactNumber = document.getElementById("contactNumber").value;
+    const setupNotes = document.getElementById("setupNotes").value;
+    const fileInput = document.getElementById("supportingDocument");
 
-    if (label === "venue" && venue) value.textContent = venue;
-    if (label === "date" && date) value.textContent = date;
-    if (label === "time" && time) value.textContent = time;
+    const requirements = [];
+    document.querySelectorAll(".requirements-grid input[type='checkbox']:checked").forEach(item => {
+      requirements.push(item.value);
+    });
+
+    localStorage.setItem("eventName", eventName);
+    localStorage.setItem("organization", organization);
+    localStorage.setItem("eventType", eventType);
+    localStorage.setItem("expectedGuests", expectedGuests);
+    localStorage.setItem("purpose", purpose);
+    localStorage.setItem("contactPerson", contactPerson);
+    localStorage.setItem("contactEmail", contactEmail);
+    localStorage.setItem("contactNumber", contactNumber);
+    localStorage.setItem("facilityRequirements", JSON.stringify(requirements));
+    localStorage.setItem("setupNotes", setupNotes);
+
+    if (fileInput.files.length > 0) {
+      localStorage.setItem("supportingDocument", fileInput.files[0].name);
+    }
   });
 });
 

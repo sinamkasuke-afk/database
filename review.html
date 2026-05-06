@@ -109,15 +109,15 @@
               <div class="info-grid three">
                 <div class="info-card">
                   <span class="label">Venue</span>
-                  <strong>Amphitheater</strong>
+                  <strong id="reviewVenue">Amphitheater</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Date</span>
-                  <strong>Mon, April 6, 2026</strong>
+                  <strong id="reviewDate">April 6, 2026</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Time</span>
-                  <strong>7:00 AM - 10:00 AM</strong>
+                  <strong id="reviewTime">7:00 AM - 10:00 AM</strong>
                 </div>
               </div>
             </div>
@@ -131,25 +131,25 @@
               <div class="info-grid two">
                 <div class="info-card">
                   <span class="label">Event Name</span>
-                  <strong>Leadership Seminar 2026</strong>
+                  <strong id="reviewEventName">Leadership Seminar 2026</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Organization / Department</span>
-                  <strong>Student Council</strong>
+                  <strong id="reviewOrganization">Student Council</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Event Type</span>
-                  <strong>Seminar</strong>
+                  <strong id="reviewEventType">Seminar</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Expected Attendees</span>
-                  <strong>350</strong>
+                  <strong id="reviewExpectedGuests">350</strong>
                 </div>
               </div>
 
               <div class="info-card full">
                 <span class="label">Purpose of Event</span>
-                <p>
+                <p id="reviewPurpose">
                   This seminar aims to orient student leaders on campus policies,
                   leadership responsibilities, and organizational planning for the academic year.
                 </p>
@@ -162,15 +162,15 @@
               <div class="info-grid three">
                 <div class="info-card">
                   <span class="label">Contact Person</span>
-                  <strong>Maria Santos</strong>
+                  <strong id="reviewContactPerson">Maria Santos</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Email Address</span>
-                  <strong>maria.santos@nu.edu.ph</strong>
+                  <strong id="reviewContactEmail">maria.santos@nu.edu.ph</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Contact Number</span>
-                  <strong>0917 123 4567</strong>
+                  <strong id="reviewContactNumber">0917 123 4567</strong>
                 </div>
               </div>
             </div>
@@ -178,7 +178,7 @@
             <div class="review-block">
               <h4>Facility Requirements</h4>
 
-              <div class="tags-wrap">
+              <div class="tags-wrap" id="reviewRequirements">
                 <span class="req-tag">Chairs</span>
                 <span class="req-tag">Tables</span>
                 <span class="req-tag">Sound System</span>
@@ -188,7 +188,7 @@
 
               <div class="info-card full">
                 <span class="label">Additional Setup Notes</span>
-                <p>
+                <p id="reviewSetupNotes">
                   Classroom-style seating arrangement near the front, projector facing center stage,
                   and at least 3 microphones available for speakers and moderators.
                 </p>
@@ -202,7 +202,7 @@
                 <div class="file-left">
                   <div class="file-icon">📄</div>
                   <div>
-                    <strong>leadership-seminar-program.pdf</strong>
+                    <strong id="reviewSupportingDocument">leadership-seminar-program.pdf</strong>
                     <p>Uploaded supporting document</p>
                   </div>
                 </div>
@@ -218,22 +218,22 @@
 
               <div class="summary-row">
                 <span>Venue</span>
-                <strong>Amphitheater</strong>
+                <strong id="sideVenue">Amphitheater</strong>
               </div>
 
               <div class="summary-row">
                 <span>Date</span>
-                <strong>April 6, 2026</strong>
+                <strong id="sideDate">April 6, 2026</strong>
               </div>
 
               <div class="summary-row">
                 <span>Time</span>
-                <strong>7:00 AM - 10:00 AM</strong>
+                <strong id="sideTime">7:00 AM - 10:00 AM</strong>
               </div>
 
               <div class="summary-row">
                 <span>Attendees</span>
-                <strong>350</strong>
+                <strong id="sideAttendees">350</strong>
               </div>
 
               <div class="summary-row">
@@ -269,6 +269,65 @@
 </main>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const venue = localStorage.getItem("reservationVenue");
+  const date = localStorage.getItem("reservationDate");
+  const time = localStorage.getItem("reservationTime");
+
+  const eventName = localStorage.getItem("eventName");
+  const organization = localStorage.getItem("organization");
+  const eventType = localStorage.getItem("eventType");
+  const expectedGuests = localStorage.getItem("expectedGuests");
+  const purpose = localStorage.getItem("purpose");
+  const contactPerson = localStorage.getItem("contactPerson");
+  const contactEmail = localStorage.getItem("contactEmail");
+  const contactNumber = localStorage.getItem("contactNumber");
+  const setupNotes = localStorage.getItem("setupNotes");
+  const supportingDocument = localStorage.getItem("supportingDocument");
+  const requirements = JSON.parse(localStorage.getItem("facilityRequirements") || "[]");
+
+  if (venue) {
+    document.getElementById("reviewVenue").textContent = venue;
+    document.getElementById("sideVenue").textContent = venue;
+  }
+
+  if (date) {
+    document.getElementById("reviewDate").textContent = date;
+    document.getElementById("sideDate").textContent = date;
+  }
+
+  if (time) {
+    document.getElementById("reviewTime").textContent = time;
+    document.getElementById("sideTime").textContent = time;
+  }
+
+  if (eventName) document.getElementById("reviewEventName").textContent = eventName;
+  if (organization) document.getElementById("reviewOrganization").textContent = organization;
+  if (eventType) document.getElementById("reviewEventType").textContent = eventType;
+  if (expectedGuests) {
+    document.getElementById("reviewExpectedGuests").textContent = expectedGuests;
+    document.getElementById("sideAttendees").textContent = expectedGuests;
+  }
+  if (purpose) document.getElementById("reviewPurpose").textContent = purpose;
+  if (contactPerson) document.getElementById("reviewContactPerson").textContent = contactPerson;
+  if (contactEmail) document.getElementById("reviewContactEmail").textContent = contactEmail;
+  if (contactNumber) document.getElementById("reviewContactNumber").textContent = contactNumber;
+  if (setupNotes) document.getElementById("reviewSetupNotes").textContent = setupNotes;
+  if (supportingDocument) document.getElementById("reviewSupportingDocument").textContent = supportingDocument;
+
+  if (requirements.length > 0) {
+    const requirementsBox = document.getElementById("reviewRequirements");
+    requirementsBox.innerHTML = "";
+
+    requirements.forEach(req => {
+      const span = document.createElement("span");
+      span.className = "req-tag";
+      span.textContent = req;
+      requirementsBox.appendChild(span);
+    });
+  }
+});
+
 function toggleMenu() {
   document.getElementById("topbar").classList.toggle("open");
 }
