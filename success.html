@@ -6,33 +6,61 @@
   <title>Reservation Submitted</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
+  <!-- IMPORTANT: use SAME CSS as new-reservation -->
+  <link rel="stylesheet" href="new-reservation.css">
   <link rel="stylesheet" href="success.css">
 </head>
 <body>
+
+<!-- ✅ COPIED HEADER EXACTLY -->
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="nu-logo.png" alt="NU Logo" class="brand-logo-img">
+
+      <div class="brand-text">
+        <h1 class="nu-title">NATIONAL UNIVERSITY</h1>
+        <p class="nu-sub">FACILITIES RESERVATION SYSTEM</p>
+      </div>
+    </div>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+    <div class="top-actions" id="topActions">
+      <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+      <a href="#" class="btn btn-outline">My Requests</a>
+
+      <div class="user-box">
+        <div class="avatar">MS</div>
+        <div class="user-info">
+          <strong>Maria S.</strong>
+          <span>Student Organization Officer</span>
+        </div>
+      </div>
+
+      <a href="login.html" class="btn btn-outline">Sign Out</a>
+    </div>
+  </div>
+</header>
 
 <div class="success-container">
 
   <div class="success-card">
 
-    <!-- ICON -->
     <div class="check-icon">✓</div>
 
-    <!-- TITLE -->
     <h1>Reservation Submitted Successfully</h1>
 
-    <!-- MESSAGE -->
     <p class="subtext">
       Your request has been submitted and is now pending approval from the
       Physical Facilities Management Office.
     </p>
 
     <p class="ticket-text">
-  Ticket No: <strong id="ticket-number"></strong>
-</p>
-
-<script src="tix.js"></script>
+      Ticket No: <strong id="ticket-number"></strong>
+    </p>
 
     <!-- SUMMARY -->
     <div class="summary-box">
@@ -40,21 +68,20 @@
 
       <div class="summary-row">
         <span>Venue</span>
-        <strong>Amphitheater</strong>
+        <strong id="successVenue">Amphitheater</strong>
       </div>
 
       <div class="summary-row">
         <span>Date</span>
-        <strong>April 6, 2026</strong>
+        <strong id="successDate">April 6, 2026</strong>
       </div>
 
       <div class="summary-row">
         <span>Time</span>
-        <strong>7:00 AM - 10:00 AM</strong>
+        <strong id="successTime">7:00 AM - 10:00 AM</strong>
       </div>
     </div>
 
-    <!-- BUTTONS -->
     <div class="actions">
       <a href="new-reservation.html" class="btn secondary">New Reservation</a>
       <a href="login.html" class="btn primary">Back to Portal</a>
@@ -63,6 +90,25 @@
   </div>
 
 </div>
+
+<script src="tix.js"></script>
+
+<!-- ✅ REQUIRED SCRIPT (for ☰ to work) -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const venue = localStorage.getItem("reservationVenue");
+  const date = localStorage.getItem("reservationDate");
+  const time = localStorage.getItem("reservationTime");
+
+  if (venue) document.getElementById("successVenue").textContent = venue;
+  if (date) document.getElementById("successDate").textContent = date;
+  if (time) document.getElementById("successTime").textContent = time;
+});
+
+function toggleMenu() {
+  document.getElementById("topbar").classList.toggle("open");
+}
+</script>
 
 </body>
 </html>
