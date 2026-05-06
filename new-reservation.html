@@ -117,22 +117,17 @@
               </label>
 
               <label class="venue-item">
-                Function Room (7th Floor - Main Building)
+                Function Room (3rd Floor - Main Building)
                 <input type="radio" name="venue">
               </label>
 
               <label class="venue-item">
-                Function Room (7th Floor - Annex Building)
+                Function Room (12th Floor - Annex Building)
                 <input type="radio" name="venue">
               </label>
 
               <label class="venue-item">
                 Garden
-                <input type="radio" name="venue">
-              </label>
-
-              <label class="venue-item">
-                Gym (Annex 2)
                 <input type="radio" name="venue">
               </label>
 
@@ -345,25 +340,201 @@
     </div>
   </main>
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const venueData = {
+    "Amphitheater": {
+      icon: "A",
+      type: "Outdoor Venue",
+      desc: "Open-air venue ideal for large gatherings, presentations, and performances.",
+      capacity: "2,000 pax",
+      location: "Main Campus",
+      features: "Stage, Sound System, Lighting, Open Seating",
+      image: "Amphitheater.jpg"
+    },
+    "Canteen": {
+      icon: "C",
+      type: "Dining Venue",
+      desc: "Indoor dining venue for food events and gatherings.",
+      capacity: "300 pax",
+      location: "Main Campus",
+      features: "Tables, Chairs, Food Stalls",
+      image: "Canteen.jpg"
+    },
+    "Classroom": {
+      icon: "C",
+      type: "Academic Venue",
+      desc: "Classroom venue suitable for lectures, seminars, and workshops.",
+      capacity: "40 pax",
+      location: "Academic Building",
+      features: "Projector, Whiteboard, Chairs",
+      image: "Classroom.jpg"
+    },
+    "Function Room (3rd Floor - Main Building)": {
+      icon: "F",
+      type: "Function Room",
+      desc: "Indoor venue for meetings, trainings, programs, and formal events.",
+      capacity: "120 pax",
+      location: "3rd Floor - Main Building",
+      features: "Projector, Sound System, Air-conditioning",
+      image: "Function3rd.jpg"
+    },
+    "Function Room (12th Floor - Annex Building)": {
+      icon: "F",
+      type: "Function Room",
+      desc: "Annex function room for seminars, workshops, and organization events.",
+      capacity: "100 pax",
+      location: "12th Floor - Annex Building",
+      features: "Projector, Chairs, Air-conditioning",
+      image: "Function12th.jpg"
+    },
+    "Garden": {
+      icon: "G",
+      type: "Outdoor Venue",
+      desc: "Open outdoor space suitable for casual events, gatherings, and ceremonies.",
+      capacity: "150 pax",
+      location: "Main Campus",
+      features: "Open Area, Natural Lighting, Seating",
+      image: "Garden.jpg"
+    },
+    "Multipurpose Hall": {
+      icon: "M",
+      type: "Event Venue",
+      desc: "Flexible venue for programs, assemblies, meetings, and school events.",
+      capacity: "500 pax",
+      location: "Main Campus",
+      features: "Stage, Chairs, Sound System",
+      image: "Multipurpose_Hall.jpg"
+    },
+    "PE Area": {
+      icon: "P",
+      type: "Sports Area",
+      desc: "Physical education area for sports activities and outdoor exercises.",
+      capacity: "200 pax",
+      location: "PE Area",
+      features: "Open Court, Sports Space",
+      image: "PE_Area.jpg"
+    },
+    "Social Hall": {
+      icon: "S",
+      type: "Social Venue",
+      desc: "Venue suitable for social gatherings, student organization events, and programs.",
+      capacity: "250 pax",
+      location: "Main Campus",
+      features: "Tables, Chairs, Sound System",
+      image: "SocialHall.jpg"
+    }
+  };
+
+  let selectedVenue = "Amphitheater";
+  let selectedTime = "";
+  let selectedDateValue = ""; // ✅ ADDED
+
+  const venueItems = document.querySelectorAll(".venue-list label.venue-item");
+
+  function getVenueName(label) {
+    return Array.from(label.childNodes)
+      .filter(node => node.nodeType === Node.TEXT_NODE)
+      .map(node => node.textContent.trim())
+      .join("")
+      .trim();
+  }
+
+  function updateVenue(name) {
+    const venue = venueData[name];
+    if (!venue) {
+      console.log("Venue not found:", name);
+      return;
+    }
+
+    selectedVenue = name;
+
+    document.querySelector(".preview-icon").textContent = venue.icon;
+    document.querySelector(".preview-overlay-top h4").textContent = name;
+    document.querySelector(".preview-overlay-top .tag").textContent = venue.type;
+    document.querySelector(".preview-desc").textContent = venue.desc;
+
+    const meta = document.querySelectorAll(".preview-meta span");
+    meta[0].textContent = venue.capacity;
+    meta[1].textContent = venue.location;
+    meta[2].textContent = venue.features;
+
+    if (venue.image !== "") {
+      document.querySelector(".preview-image img").src = venue.image;
+    }
+
+    document.querySelector(".slots-title").textContent = "Availability for " + name;
+  }
+
+  venueItems.forEach(label => {
+    label.addEventListener("click", function () {
+      venueItems.forEach(item => item.classList.remove("selected"));
+      this.classList.add("selected");
+
+      const radio = this.querySelector("input[type='radio']");
+      if (radio) radio.checked = true;
+
+      const venueName = getVenueName(this);
+      updateVenue(venueName);
+    });
+  });
+
   const days = document.querySelectorAll(".days span");
   const selectedDate = document.querySelector(".selected-date h4");
 
   days.forEach(day => {
-    day.addEventListener("click", () => {
-      if (day.classList.contains("muted")) return;
+    day.addEventListener("click", function () {
+      if (this.classList.contains("muted")) return;
 
       days.forEach(d => d.classList.remove("selected-day"));
-      day.classList.add("selected-day");
+      this.classList.add("selected-day");
 
-      selectedDate.textContent = "April " + day.textContent + ", 2026";
+      selectedDateValue = "April " + this.textContent.trim() + ", 2026"; // ✅ ADDED
+      selectedDate.textContent = selectedDateValue;
     });
   });
-</script>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("topbar").classList.toggle("open");
-  }
+  const slotButtons = document.querySelectorAll(".slot button");
+
+  slotButtons.forEach(button => {
+    if (!button.disabled) {
+      button.addEventListener("click", function () {
+        slotButtons.forEach(btn => {
+          if (!btn.disabled) btn.textContent = "Select";
+        });
+
+        this.textContent = "Selected";
+
+        selectedTime = this.closest(".slot").querySelector("span").textContent.trim();
+      });
+    }
+  });
+
+  /* ================= NEXT BUTTON (UPDATED) ================= */
+  document.querySelector(".next-btn").addEventListener("click", function (e) {
+    const selectedDay = document.querySelector(".selected-day");
+
+    if (!selectedVenue || !selectedDay || !selectedTime) {
+      e.preventDefault();
+      alert("Please select venue, date, and time first.");
+      return;
+    }
+
+    // ✅ SAVE DATA
+    localStorage.setItem("reservationVenue", selectedVenue);
+    localStorage.setItem("reservationDate", selectedDateValue);
+    localStorage.setItem("reservationTime", selectedTime);
+  });
+
+  updateVenue("Amphitheater");
+});
+
+function toggleMenu() {
+  document.getElementById("topbar").classList.toggle("open");
+}
+</script>
+</script>
+</script>
+</script>
 </script>
 </body>
 </html>
