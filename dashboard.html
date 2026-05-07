@@ -1,224 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Dashboard</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="base.css" />
   <link rel="stylesheet" href="dashboard.css" />
 </head>
-
 <body>
-  <div class="dashboard-container">
-
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <div class="sidebar-top">
-        <div class="school-brand">
-        <img src="nu-logo.png" alt="NU Logo" class="nu-logo">
-          <div class="school-text">
-            <h1>NATIONAL<br>UNIVERSITY<br>MANILA</h1>
-            <p>FACILITIES RESERVATION SYSTEM</p>
+  <div class="layout">
+    <main class="main">
+      <section class="content">
+        <div class="page-title-row">
+          <div class="title-left">
+            <div class="title-icon" data-ico="dashboard"></div>
+            <div>
+              <h1>Dashboard</h1>
+              <p>Overview of all facility reservation requests.</p>
+            </div>
           </div>
-        </div>
-      </div>
-
-      <div class="sidebar-line"></div>
-
-      <nav class="sidebar-menu">
-        <a href="dashboard.html" class="menu-item active">
-          <i class='bx bxs-home'></i>
-          <span>Dashboard</span>
-        </a>
-
-        <a href="reservation.html" class="menu-item">
-          <i class='bx bx-calendar'></i>
-          <span>Reservation Requests</span>
-        </a>
-
-        <a href="admin-login.html" class="menu-item">
-          <i class='bx bx-log-out'></i>
-          <span>Logout</span>
-        </a>
-      </nav>
-
-      <div class="sidebar-watermark">
-        <i class='bx bxs-shield-alt-2'></i>
-      </div>
-      
-      <div class="sidebar-bulldog">
-         <img src="bulldog.png" alt="NU Bulldog">
-      </div>
-
-      <div class="sidebar-contact">
-        <h3>PFMO Contact</h3>
-
-        <div class="contact-item">
-          <i class='bx bx-phone'></i>
-          <span>(02) 8527-4630 loc. 113</span>
+          <input
+            id="search"
+            class="search"
+            placeholder="Search request ID, requester, or status..."
+          />
         </div>
 
-        <div class="contact-item">
-          <i class='bx bx-envelope'></i>
-          <span>pfmo@nu.edu.ph</span>
-        </div>
-      </div>
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-
-      <!-- HEADER -->
-      <header class="top-header">
-        <div class="welcome-text">
-          <h2>Welcome, Admin!</h2>
-          <p>Physical Facilities Management Office</p>
-        </div>
-
-        <div class="admin-profile">
-          <div class="admin-avatar">A</div>
-          <div class="admin-info">
-            <h4>Admin User</h4>
-            <p>Administrator</p>
+        <div class="stats">
+          <div class="stat-card">
+            <p>Total Requests</p>
+            <h2 id="total">0</h2>
           </div>
-          <i class='bx bx-chevron-down'></i>
-        </div>
-      </header>
-
-      <!-- DASHBOARD CONTENT -->
-      <section class="dashboard-content">
-
-        <!-- Title -->
-        <div class="section-card">
-          <div class="section-icon">
-            <i class='bx bx-grid-alt'></i>
+          <div class="stat-card">
+            <p>Pending</p>
+            <h2 id="pending">0</h2>
           </div>
-
-          <div class="section-text">
-            <h3>Dashboard</h3>
-            <p>Overview of facility reservation activity and system status.</p>
+          <div class="stat-card">
+            <p>Approved</p>
+            <h2 id="approved">0</h2>
+          </div>
+          <div class="stat-card">
+            <p>Declined</p>
+            <h2 id="declined">0</h2>
           </div>
         </div>
 
-        <!-- Cards -->
-        <div class="cards-grid">
-          <div class="info-card">
-            <div class="card-icon blue">
-              <i class='bx bx-file'></i>
-            </div>
-            <div class="card-details">
-              <h4>Total Requests</h4>
-              <h2>12</h2>
-            </div>
-          </div>
-
-          <div class="info-card">
-            <div class="card-icon yellow">
-              <i class='bx bx-time-five'></i>
-            </div>
-            <div class="card-details">
-              <h4>Pending</h4>
-              <h2>5</h2>
+        <div class="dashboard-grid">
+          <div class="card">
+            <h3 class="mini-title">Recent Reservation Requests</h3>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>REQUEST ID</th>
+                    <th>REQUESTER</th>
+                    <th>VENUE</th>
+                    <th>STATUS</th>
+                  </tr>
+                </thead>
+                <tbody id="rows"></tbody>
+              </table>
             </div>
           </div>
 
-          <div class="info-card">
-            <div class="card-icon green">
-              <i class='bx bx-check-circle'></i>
-            </div>
-            <div class="card-details">
-              <h4>Approved</h4>
-              <h2>5</h2>
-            </div>
-          </div>
-
-          <div class="info-card">
-            <div class="card-icon red">
-              <i class='bx bx-x-circle'></i>
-            </div>
-            <div class="card-details">
-              <h4>Declined</h4>
-              <h2>2</h2>
+          <div class="card">
+            <h3 class="mini-title">Status Summary</h3>
+            <div class="status-list">
+              <div>
+                <span>Pending</span>
+                <span id="sumPending">0</span>
+              </div>
+              <div>
+                <span>Approved</span>
+                <span id="sumApproved">0</span>
+              </div>
+              <div>
+                <span>Declined</span>
+                <span id="sumDeclined">0</span>
+              </div>
             </div>
           </div>
         </div>
-
-        <!-- Table -->
-        <div class="table-wrapper">
-          <div class="table-header">
-            <h3>Recent Reservation Requests</h3>
-            <input type="text" placeholder="Search request ID, requester, or venue..." />
-          </div>
-
-          <table>
-            <thead>
-              <tr>
-                <th>REQUEST ID</th>
-                <th>REQUESTER</th>
-                <th>VENUE</th>
-                <th>DATE</th>
-                <th>TIME</th>
-                <th>STATUS</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>REQ-2026-0012</td>
-                <td><strong>Juan Dela Cruz</strong><br><span>Student</span></td>
-                <td>Amphitheater</td>
-                <td>April 6, 2026</td>
-                <td>7:00 AM - 10:00 AM</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-
-              <tr>
-                <td>REQ-2026-0011</td>
-                <td><strong>Maria Santos</strong><br><span>Employee</span></td>
-                <td>Conference Room A</td>
-                <td>April 7, 2026</td>
-                <td>1:00 PM - 4:00 PM</td>
-                <td><span class="status pending">Pending</span></td>
-              </tr>
-
-              <tr>
-                <td>REQ-2026-0010</td>
-                <td><strong>Mark Reyes</strong><br><span>Student</span></td>
-                <td>Audio Visual Room</td>
-                <td>April 8, 2026</td>
-                <td>9:00 AM - 12:00 PM</td>
-                <td><span class="status approved">Approved</span></td>
-              </tr>
-
-              <tr>
-                <td>REQ-2026-0008</td>
-                <td><strong>Luis Mendoza</strong><br><span>Student</span></td>
-                <td>Practice Court</td>
-                <td>April 4, 2026</td>
-                <td>8:00 AM - 10:00 AM</td>
-                <td><span class="status declined">Declined</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
       </section>
 
-      <!-- FOOTER -->
       <footer class="footer">
-        <p>© 2026 National University Manila</p>
-        <p>Physical Facilities Management Office</p>
+        © 2026 National University Manila<br />
+        Physical Facilities Management Office
       </footer>
-
     </main>
   </div>
-</body>
 
+  <script src="app.js"></script>
+  <script>
+    initShell("dashboard");
+
+    function render() {
+      let c = counts();
+      total.textContent = c.total;
+      pending.textContent = c.pending;
+      approved.textContent = c.approved;
+      declined.textContent = c.declined;
+      sumPending.textContent = c.pending;
+      sumApproved.textContent = c.approved;
+      sumDeclined.textContent = c.declined;
+
+      let q = search.value.toLowerCase();
+      rows.innerHTML = getData()
+        .filter((x) => x.join(" ").toLowerCase().includes(q))
+        .slice(0, 7)
+        .map(
+          (x) =>
+            `<tr><td>${x[0]}</td><td><b>${x[1]}</b><br><span class="subtext">${x[2]}</span></td><td>${x[3]}</td><td>${badge(
+              x[6]
+            )}</td></tr>`
+        )
+        .join("");
+    }
+
+    search.oninput = render;
+    render();
+  </script>
+</body>
 </html>
+

@@ -1,0 +1,38 @@
+.filters {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  border: 0;
+  background: white;
+  color: #25385e;
+  font-weight: 700;
+  padding: 13px 18px;
+  border-bottom: 2px solid #e7ecf5;
+  cursor: pointer;
+}
+
+.filters button.active {
+  background: #06285f;
+  color: white;
+  border-radius: 8px;
+  border-bottom: 0;
+}
+
+.filters span {
+  margin-left: 10px;
+  background: #fff6e8;
+  color: #e59b16;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.filters button.active span {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+}
+

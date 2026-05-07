@@ -25,7 +25,140 @@
             <p>FACILITIES RESERVATION SYSTEM</p>
           </div>
         </div>
-      </div>
+      </div><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservation Requests</title>
+  <link rel="stylesheet" href="base.css" />
+  <link rel="stylesheet" href="reservation.css" />
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <section class="content">
+        <div class="page-title-row">
+          <div class="title-left">
+            <div class="title-icon" data-ico="reservation"></div>
+            <div>
+              <h1>Reservation Requests</h1>
+              <p>Manage and review all facility reservation requests.</p>
+            </div>
+          </div>
+          <input
+            id="search"
+            class="search"
+            placeholder="Search request ID, requester, or venue..."
+          />
+        </div>
+
+        <div class="filters">
+          <button class="active" data-filter="all">
+            All Requests <span id="allCount">0</span>
+          </button>
+          <button data-filter="pending">
+            Pending <span id="pCount">0</span>
+          </button>
+          <button data-filter="approved">
+            Approved <span id="aCount">0</span>
+          </button>
+          <button data-filter="declined">
+            Declined <span id="dCount">0</span>
+          </button>
+        </div>
+
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>REQUEST ID</th>
+                  <th>REQUESTER</th>
+                  <th>VENUE</th>
+                  <th>DATE</th>
+                  <th>TIME</th>
+                  <th>STATUS</th>
+                  <th>RESPONSE</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+
+          <div class="pagination">
+            <button>‹</button>
+            <button class="active-page">1</button>
+            <button>2</button>
+            <button>›</button>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        © 2026 National University Manila<br />
+        Physical Facilities Management Office
+      </footer>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    initShell("reservation");
+
+    let current = "all";
+
+    function render() {
+      let c = counts();
+
+      allCount.textContent = c.total;
+      pCount.textContent = c.pending;
+      aCount.textContent = c.approved;
+      dCount.textContent = c.declined;
+
+      let q = search.value.toLowerCase();
+      rows.innerHTML = getData()
+        .filter(
+          (x) =>
+            (current === "all" || x[6] === current) &&
+            x.join(" ").toLowerCase().includes(q)
+        )
+        .map((x) =>
+          `<tr><td>${x[0]}</td><td><b>${x[1]}</b><br><span class="subtext">${x[2]}</span></td><td>${x[3]}</td><td>${x[4]}</td><td>${x[5]}</td><td>${badge(
+            x[6]
+          )}</td><td>${
+            x[6] === "pending"
+              ? `<button class="btn approve" onclick="setStatus('${x[0]}','approved')">Approve</button><button class="btn decline" onclick="setStatus('${x[0]}','declined')">Decline</button>`
+              : '<span class="dash">-</span>'
+          }</td></tr>`
+        )
+        .join("");
+    }
+
+    function setStatus(id, status) {
+      let d = getData();
+      let r = d.find((x) => x[0] === id);
+      if (r) r[6] = status;
+      saveData(d);
+      render();
+    }
+
+    document.querySelectorAll(".filters button").forEach((b) => {
+      b.onclick = () => {
+        document.querySelectorAll(".filters button").forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        current = b.dataset.filter;
+        render();
+      };
+    });
+
+    search.oninput = render;
+    render();
+  </script>
+</body>
+</html>
+
+
 
       <div class="sidebar-line"></div>
 
