@@ -25,17 +25,17 @@
           <div class="card calendar-card">
             <div class="cal-head">
               <div class="cal-btns">
-                <button onclick="changeMonth(-1)">‹</button>
-                <button onclick="changeMonth(1)">›</button>
+                <button onclick="moveDate(-1)">‹</button>
+                <button onclick="moveDate(1)">›</button>
                 <button onclick="goToday()">Today</button>
               </div>
 
-              <h2 id="monthTitle">May 2026</h2>
+              <h2 id="monthTitle"></h2>
 
               <div class="view-btns">
-                <button class="active" onclick="setView(this, 'month')">Month</button>
-                <button onclick="setView(this, 'week')">Week</button>
                 <button onclick="setView(this, 'day')">Day</button>
+                <button onclick="setView(this, 'week')">Week</button>
+                <button class="active" onclick="setView(this, 'month')">Month</button>
               </div>
             </div>
 
@@ -53,18 +53,19 @@
 
             <div class="side-card">
               <h3>Upcoming Reservations</h3>
+
               <div class="upcoming">
-                <b>Seminar on Leadership</b><br /><br />
+                <b>Seminar on Leadership</b><br><br>
                 May 21 • Conference Room A
               </div>
 
               <div class="upcoming">
-                <b>Project Presentation</b><br /><br />
+                <b>Project Presentation</b><br><br>
                 May 26 • Audio Visual Room
               </div>
 
               <div class="upcoming">
-                <b>Faculty Meeting</b><br /><br />
+                <b>Faculty Meeting</b><br><br>
                 May 28 • Function Room
               </div>
             </div>
@@ -73,7 +74,7 @@
       </section>
 
       <footer class="footer">
-        © 2026 National University Manila<br />
+        © 2026 National University Manila<br>
         Physical Facilities Management Office
       </footer>
     </main>
@@ -83,91 +84,161 @@
   <script>
     initShell("calendar");
 
-    let m = 4;
-    let y = 2026;
+    const today = new Date();
+    let currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
     let view = "month";
 
-    const names = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
     ];
 
-    const ev = {
-      6: ["7:00 AM<br>Reservation<br>Amphitheater", ""],
-      8: ["9:00 AM<br>Seminar<br>Audio Visual Room", "blue"],
-      10: ["10:00 AM<br>Student Activity<br>Function Room", "gold"],
-      21: ["1:00 PM<br>Seminar on Leadership<br>Conference Room A", "blue"],
-      26: ["9:00 AM<br>Project Presentation<br>AVR", ""],
-      28: ["1:00 PM<br>Faculty Meeting<br>Function Room", "violet"],
+    const events = {
+      "2026-4-6": ["7:00 AM<br>Reservation<br>Amphitheater", ""],
+      "2026-4-8": ["9:00 AM<br>Seminar<br>Audio Visual Room", "blue"],
+      "2026-4-10": ["10:00 AM<br>Student Activity<br>Function Room", "gold"],
+      "2026-4-21": ["1:00 PM<br>Seminar on Leadership<br>Conference Room A", "blue"],
+      "2026-4-26": ["9:00 AM<br>Project Presentation<br>AVR", ""],
+      "2026-4-28": ["1:00 PM<br>Faculty Meeting<br>Function Room", "violet"]
     };
 
-    function renderCal() {
-      monthTitle.textContent = `${names[m]} ${y}`;
+    function eventKey(date) {
+      return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
+    }
 
-      let first = new Date(y, m, 1).getDay();
-      let days = new Date(y, m + 1, 0).getDate();
+    function sameDay(a, b) {
+      return a.getFullYear() === b.getFullYear() &&
+             a.getMonth() === b.getMonth() &&
+             a.getDate() === b.getDate();
+    }
+
+    function renderHeader() {
+      const m = currentDate.getMonth();
+      const y = currentDate.getFullYear();
+
+      if (view === "day") {
+        monthTitle.textContent = `${monthNames[m]} ${currentDate.getDate()}, ${y}`;
+      } else {
+        monthTitle.textContent = `${monthNames[m]} ${y}`;
+      }
+    }
+
+    function renderMonth() {
+      const y = currentDate.getFullYear();
+      const m = currentDate.getMonth();
+
+      const first = new Date(y, m, 1).getDay();
+      const days = new Date(y, m + 1, 0).getDate();
+
       let html = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-        .map((d) => `<div class="day-name">${d}</div>`)
+        .map(day => `<div class="day-name">${day}</div>`)
         .join("");
 
       for (let i = 0; i < first; i++) {
-        html += '<div class="day"></div>';
+        html += `<div class="day empty"></div>`;
       }
 
-      let max = view === "day" ? 1 : days;
-      let start = view === "day" ? 20 : 1;
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(y, m, d);
+        const e = events[eventKey(date)];
+        const isToday = sameDay(date, today);
+        const isSelected = sameDay(date, currentDate);
 
-      if (view === "week") {
-        start = 17;
-        max = 23;
-      }
-
-      for (let d = start; d <= max; d++) {
-        let e = ev[d];
-        html += `<div class="day"><span class="${d === 20 ? "today" : ""}">${d}</span>${
-          e ? `<div class="event ${e[1]}">${e[0]}</div>` : ""
-        }</div>`;
+        html += `
+          <div class="day clickable-day" onclick="selectDay(${y}, ${m}, ${d})">
+            <span class="${isToday ? "today" : isSelected ? "selected-day" : ""}">${d}</span>
+            ${e ? `<div class="event ${e[1]}">${e[0]}</div>` : ""}
+          </div>
+        `;
       }
 
       calendarGrid.innerHTML = html;
     }
 
-    function setView(btn, v) {
-      view = v;
-      document.querySelectorAll(".view-btns button").forEach((b) => b.classList.remove("active"));
+    function renderWeek() {
+      const start = new Date(currentDate);
+      start.setDate(currentDate.getDate() - currentDate.getDay());
+
+      let html = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+        .map(day => `<div class="day-name">${day}</div>`)
+        .join("");
+
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(start);
+        date.setDate(start.getDate() + i);
+
+        const e = events[eventKey(date)];
+        const isToday = sameDay(date, today);
+        const isSelected = sameDay(date, currentDate);
+
+        html += `
+          <div class="day week-day-box clickable-day" onclick="selectDay(${date.getFullYear()}, ${date.getMonth()}, ${date.getDate()})">
+            <span class="${isToday ? "today" : isSelected ? "selected-day" : ""}">
+              ${date.getDate()}
+            </span>
+            ${e ? `<div class="event ${e[1]}">${e[0]}</div>` : ""}
+          </div>
+        `;
+      }
+
+      calendarGrid.innerHTML = html;
+    }
+
+    function renderDay() {
+      const e = events[eventKey(currentDate)];
+      const isToday = sameDay(currentDate, today);
+
+      calendarGrid.innerHTML = `
+        <div class="day-name">Selected Day</div>
+        <div class="day day-view-box">
+          <span class="${isToday ? "today" : "selected-day"}">${currentDate.getDate()}</span>
+          ${e ? `<div class="event ${e[1]}">${e[0]}</div>` : `<p class="no-event">No reservation for this day.</p>`}
+        </div>
+      `;
+    }
+
+    function renderCal() {
+      renderHeader();
+
+      if (view === "month") renderMonth();
+      if (view === "week") renderWeek();
+      if (view === "day") renderDay();
+    }
+
+    function selectDay(year, month, day) {
+      currentDate = new Date(year, month, day);
+      renderCal();
+    }
+
+    function setView(btn, selectedView) {
+      view = selectedView;
+
+      document.querySelectorAll(".view-btns button").forEach(button => {
+        button.classList.remove("active");
+      });
+
       btn.classList.add("active");
       renderCal();
     }
 
-    function changeMonth(x) {
-      m += x;
-      if (m < 0) {
-        m = 11;
-        y--;
+    function moveDate(step) {
+      if (view === "month") {
+        currentDate.setMonth(currentDate.getMonth() + step);
       }
-      if (m > 11) {
-        m = 0;
-        y++;
+
+      if (view === "week") {
+        currentDate.setDate(currentDate.getDate() + step * 7);
       }
+
+      if (view === "day") {
+        currentDate.setDate(currentDate.getDate() + step);
+      }
+
       renderCal();
     }
 
     function goToday() {
-      m = 4;
-      y = 2026;
-      view = "month";
-      document.querySelectorAll(".view-btns button").forEach((b) => b.classList.remove("active"));
-      document.querySelector(".view-btns button").classList.add("active");
+      currentDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
       renderCal();
     }
 
@@ -175,4 +246,3 @@
   </script>
 </body>
 </html>
-

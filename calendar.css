@@ -17,6 +17,13 @@
 
 .cal-head h2 {
   color: #06285f;
+  font-size: 28px;
+}
+
+.cal-btns,
+.view-btns {
+  display: flex;
+  gap: 8px;
 }
 
 .cal-btns button,
@@ -59,6 +66,10 @@
   background: white;
 }
 
+.day.empty {
+  background: #fafbfe;
+}
+
 .today {
   display: inline-grid;
   place-items: center;
@@ -77,6 +88,7 @@
   border-radius: 6px;
   font-size: 12px;
   font-weight: normal;
+  line-height: 1.25;
 }
 
 .event.blue {
@@ -92,6 +104,21 @@
 .event.violet {
   border-color: #9074df;
   background: #f2edff;
+}
+
+.week-day-box {
+  min-height: 360px;
+}
+
+.day-view-box {
+  grid-column: span 6;
+  min-height: 360px;
+}
+
+.no-event {
+  margin-top: 15px;
+  color: #53617c;
+  font-weight: normal;
 }
 
 .side-card {
@@ -150,3 +177,20 @@
   }
 }
 
+.clickable-day {
+  cursor: pointer;
+}
+
+.clickable-day:hover {
+  background: #f6f8fc;
+}
+
+.selected-day {
+  display: inline-grid;
+  place-items: center;
+  background: #f6b51e;
+  color: #06285f;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+}
