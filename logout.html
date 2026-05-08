@@ -1,158 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Logout</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logout</title>
+  <link rel="stylesheet" href="base.css" />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .logout-wrap {
+      min-height: calc(100vh - 105px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
 
-<style>
+    .logout-box {
+      width: 380px;
+      background: white;
+      border: 1px solid #edf0f5;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      text-align: center;
+      padding: 34px 28px;
+    }
 
-/* RESET */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
+    .logout-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: #eef4ff;
+      color: #06285f;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      font-size: 28px;
+      font-weight: bold;
+    }
 
-/* BODY */
-body{
-  display:flex;
-  height:100vh;
-  background:#f4f6fb;
-}
+    .logout-box h1 {
+      color: #06285f;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
 
-/* SIDEBAR */
-.sidebar{
-  width:280px;
-  background:#0a2a66;
-  color:white;
-  padding:20px;
-  position:relative;
-}
+    .logout-box p {
+      color: #53617c;
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
 
-.sidebar h2{
-  margin-bottom:30px;
-}
+    .logout-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
 
-.sidebar a{
-  display:block;
-  padding:12px;
-  margin:10px 0;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-}
+    .logout-actions a {
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+    }
 
-.sidebar a.logout{
-  background:#f4b400;
-  color:black;
-}
+    .cancel-btn {
+      border: 1px solid #dfe5ef;
+      color: #06285f;
+      background: white;
+    }
 
-/* GOLD CURVE */
-.sidebar::after{
-  content:'';
-  position:absolute;
-  right:-40px;
-  top:0;
-  width:80px;
-  height:100%;
-  background:#f4b400;
-  border-radius:50px;
-}
-
-/* MAIN */
-.main{
-  flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-/* MODAL */
-.logout-box{
-  background:white;
-  padding:30px;
-  border-radius:12px;
-  text-align:center;
-  width:350px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.2);
-}
-
-.logout-icon{
-  font-size:40px;
-  margin-bottom:10px;
-  color:#0a2a66;
-}
-
-.logout-box h2{
-  margin-bottom:10px;
-}
-
-.logout-box p{
-  margin-bottom:20px;
-  color:#555;
-}
-
-/* BUTTONS */
-.buttons{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-}
-
-.btn{
-  padding:10px 20px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-}
-
-.cancel{
-  border:1px solid #ccc;
-  color:#333;
-}
-
-.logout{
-  background:#0a2a66;
-  color:white;
-}
-
-</style>
+    .logout-btn {
+      background: #06285f;
+      color: white;
+    }
+  </style>
 </head>
 
 <body>
+  <div class="layout">
+    <main class="main">
+      <section class="logout-wrap">
+        <div class="logout-box">
+          <div class="logout-icon">↪</div>
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-  <h2>NU Manila</h2>
+          <h1>Confirm Logout</h1>
 
-  <a href="#">Dashboard</a>
-  <a href="#">Reservation Requests</a>
-  <a href="#" class="logout">Logout</a>
-</div>
+          <p>
+            Are you sure you want to logout from your admin account?
+          </p>
 
-<!-- MAIN CONTENT -->
-<div class="main">
+          <div class="logout-actions">
+            <a href="dashboard.html" class="cancel-btn">Cancel</a>
+            <a href="admin-login.html" class="logout-btn">Logout</a>
+          </div>
+        </div>
+      </section>
 
-  <!-- LOGOUT MODAL -->
-  <div class="logout-box">
-
-    <div class="logout-icon">↪</div>
-
-    <h2>Confirm Logout</h2>
-    <p>Are you sure you want to logout from your account?</p>
-
-    <div class="buttons">
-      <a href="admin-dashboard.html" class="btn cancel">Cancel</a>
-      <a href="login.html" class="btn logout">Logout</a>
-    </div>
-
+      <footer class="footer">
+        © 2026 National University Manila<br>
+        Physical Facilities Management Office
+      </footer>
+    </main>
   </div>
 
-</div>
-
+  <script src="app.js"></script>
+  <script>
+    initShell("logout");
+  </script>
 </body>
 </html>
