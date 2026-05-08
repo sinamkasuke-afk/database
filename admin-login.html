@@ -7,31 +7,35 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="admin-login.css" />
 </head>
 
 <body>
+
   <main class="page">
+
     <section class="portal-box">
 
-<<<<<<< HEAD
-      <div class="left-content">
-        <img
-          src="nu-logo.png"
-          alt="NU Logo"
-          class="nu-logo"
-        >
-=======
       <div class="left-panel">
+
         <div class="left-content">
-          <img src="nu-logo.png" alt="NU Logo" class="nu-logo">
->>>>>>> 21d0e75598059be6ff54d447e297a68d4e8e3bdb
 
-          <p class="school-name">NATIONAL UNIVERSITY MANILA</p>
+          <img
+            src="nu-logo.png"
+            alt="NU Logo"
+            class="nu-logo"
+          >
 
-          <h1>Admin<br>Login</h1>
+          <p class="school-name">
+            NATIONAL UNIVERSITY MANILA
+          </p>
+
+          <h1>
+            Admin<br>Login
+          </h1>
 
           <div class="left-info">
             <p>Facilities Reservation System</p>
@@ -40,86 +44,157 @@
 
           <div class="assist">
             <span></span>
-            <p>For assistance, contact the Physical Facilities Management Office.</p>
+
+            <p>
+              For assistance, contact the Physical Facilities Management Office.
+            </p>
           </div>
+
         </div>
+
       </div>
 
       <div class="curve"></div>
 
       <div class="right-panel">
+
         <div class="login-card">
 
-          <div class="login-tab">Login</div>
+          <div class="login-tab">
+            Login
+          </div>
 
           <h2>Admin Login</h2>
-          <p class="subtitle">Please sign in to continue to your admin account</p>
+
+          <p class="subtitle">
+            Please sign in to continue to your admin account
+          </p>
 
           <form onsubmit="return adminLogin()">
-            <label for="admin-email">Email Address</label>
+
+            <label for="admin-email">
+              Email Address
+            </label>
+
             <div class="input-group">
               <span class="input-icon"></span>
-              <input id="admin-email" type="email" placeholder="Enter your admin email">
+
+              <input
+                id="admin-email"
+                type="email"
+                placeholder="Enter your admin email"
+              >
             </div>
 
-            <label for="admin-password">Password</label>
+            <label for="admin-password">
+              Password
+            </label>
+
             <div class="input-group">
+
               <span class="input-icon"></span>
-              <input id="admin-password" type="password" placeholder="Enter your password">
-              <button type="button" class="toggle-btn" onclick="togglePassword()">Show</button>
+
+              <input
+                id="admin-password"
+                type="password"
+                placeholder="Enter your password"
+              >
+
+              <button
+                type="button"
+                class="toggle-btn"
+                onclick="togglePassword()"
+              >
+                Show
+              </button>
+
             </div>
 
             <div class="form-row">
+
               <label class="remember">
                 <input type="checkbox">
                 <span>Remember me</span>
               </label>
 
-              <a href="#" class="forgot-link">Forgot password?</a>
+              <a href="#" class="forgot-link">
+                Forgot password?
+              </a>
+
             </div>
 
-            <button type="submit" class="login-btn">Login</button>
+            <button type="submit" class="login-btn">
+              Login
+            </button>
 
             <div class="divider">
               <span>or</span>
             </div>
 
-            <a href="index.html" class="return-btn">Return to Main Portal</a>
+            <a href="index.html" class="return-btn">
+              Return to Main Portal
+            </a>
+
           </form>
+
         </div>
 
-        <p class="bottom-note">Secure admin access. Unauthorized access is prohibited.</p>
+        <p class="bottom-note">
+          Secure admin access. Unauthorized access is prohibited.
+        </p>
+
       </div>
 
     </section>
+
   </main>
 
   <script>
+
     function togglePassword() {
-      const password = document.getElementById("admin-password");
-      const btn = document.querySelector(".toggle-btn");
+
+      const password =
+        document.getElementById("admin-password");
+
+      const btn =
+        document.querySelector(".toggle-btn");
 
       if (password.type === "password") {
+
         password.type = "text";
         btn.textContent = "Hide";
+
       } else {
+
         password.type = "password";
         btn.textContent = "Show";
+
       }
+
     }
 
     function adminLogin() {
-      const email = document.getElementById("admin-email").value.trim();
-      const password = document.getElementById("admin-password").value.trim();
+
+      const email =
+        document.getElementById("admin-email").value.trim();
+
+      const password =
+        document.getElementById("admin-password").value.trim();
 
       if (!email || !password) {
+
         alert("Please fill in all fields.");
         return false;
+
       }
 
       window.location.href = "dashboard.html";
+
       return false;
+
     }
+
   </script>
+
 </body>
 </html>

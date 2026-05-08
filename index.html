@@ -14,13 +14,14 @@
   <div class="container nav">
 
     <div class="brand">
-      <img src="nu-logo.png">
+      <img src="nu-logo.png" alt="National University Logo">
       <span>NATIONAL UNIVERSITY MANILA</span>
     </div>
-    <div class="help-container">
-      <button class="help-btn" onclick="toggleHelp()">Help?</button>
-      <div class="help-box" id="helpBox">
 
+    <div class="help-container">
+      <button class="help-btn" type="button" onclick="toggleHelp()">Help?</button>
+
+      <div class="help-box" id="helpBox">
         <h3>Help & Support</h3>
         <p class="small">How can we help you?</p>
 
@@ -44,8 +45,7 @@
           <span>Learn more about this portal</span>
         </div>
 
-        <button class="close-btn" onclick="toggleHelp()">Close</button>
-
+        <button class="close-btn" type="button" onclick="toggleHelp()">Close</button>
       </div>
     </div>
 
@@ -55,7 +55,11 @@
 <section class="hero">
   <div class="container hero-content">
 
-    <img class="hero-logo" src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png">
+    <img 
+      class="hero-logo" 
+      src="https://www.national-u.edu.ph/wp-content/uploads/2018/12/cropped-NU-Shield_FC_RGB_POS_AW.png" 
+      alt="National University Shield"
+    >
 
     <p class="tag">NATIONAL UNIVERSITY MANILA</p>
 
@@ -91,10 +95,10 @@
 </footer>
 
 <script>
-function toggleHelp(){
-  const box = document.getElementById("helpBox");
-  box.classList.toggle("show");
-}
+  function toggleHelp() {
+    const box = document.getElementById("helpBox");
+    box.classList.toggle("show");
+  }
 </script>
 
 </body>
