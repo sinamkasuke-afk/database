@@ -308,7 +308,7 @@ select:focus {
 
   .login-page{
     width:100%;
-    min-height:auto;
+    height:auto;
     grid-template-columns:1fr;
   }
 

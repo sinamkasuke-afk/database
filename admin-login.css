@@ -424,7 +424,7 @@ form label{
 
   .right-panel {
     width: 100%;
-    min-height: auto;
+    height:auto;
     padding: 35px 20px 80px;
   }
 
