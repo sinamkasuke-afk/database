@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Requests</title>
+
+  <link rel="stylesheet" href="new-reservation.css">
+  <link rel="stylesheet" href="my-requests.css">
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="nu-logo.png" alt="NU Logo" class="brand-logo-img">
+      <div class="brand-text">
+        <h1 class="nu-title">NATIONAL UNIVERSITY</h1>
+        <p class="nu-sub">FACILITIES RESERVATION SYSTEM</p>
+      </div>
+    </div>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+    <div class="top-actions" id="topActions">
+      <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+      <a href="my-requests.html" class="btn btn-outline">My Requests</a>
+      <a href="login.html" class="btn btn-outline">Sign Out</a>
+
+      <div class="user-box">
+        <div class="avatar">MS</div>
+        <div class="user-info">
+          <strong>Maria S.</strong>
+          <span>Student Organization Officer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="my-page">
+  <section class="my-card">
+    <h1>My Requests</h1>
+    <p class="subtitle">Track your submitted facility reservation request.</p>
+
+    <div class="request-box">
+      <div class="request-head">
+        <div>
+          <h2>REQ-2026-0012</h2>
+          <p>Conference Room A</p>
+        </div>
+
+        <span class="approved">Approved</span>
+      </div>
+
+      <div class="request-details">
+        <div>
+          <label>Date</label>
+          <p>May 21, 2026</p>
+        </div>
+
+        <div>
+          <label>Time</label>
+          <p>1:00 PM - 3:00 PM</p>
+        </div>
+
+        <div>
+          <label>Purpose</label>
+          <p>Seminar on Leadership</p>
+        </div>
+
+        <div>
+          <label>Requested By</label>
+          <p>Maria Santos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+function toggleMenu() {
+  document.getElementById("topbar").classList.toggle("open");
+}
+</script>
+
+</body>
+</html>
