@@ -937,3 +937,8 @@ a{text-decoration:none}
   grid-column:2; /* move to right side */
   margin-top:10px;
 }
+
+.top-actions a{
+  position:relative;
+  z-index:999;
+}

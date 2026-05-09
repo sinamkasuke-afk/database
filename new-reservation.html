@@ -28,7 +28,7 @@
 
     <div class="top-actions" id="topActions">
       <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
-      <a href="#" class="btn btn-outline">My Requests</a>
+      <a href="my-requests.html" class="btn btn-outline">My Requests</a>
 
       <div class="user-box">
         <div class="avatar">MS</div>
@@ -338,6 +338,8 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
+  localStorage.removeItem("currentTicketNumber");
+
   const venueData = {
     "Amphitheater": {
       icon: "A",
