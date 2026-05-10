@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="new-reservation.css">
 </head>
+
 <body>
 
 <header class="topbar" id="topbar">
@@ -28,15 +29,14 @@
 
     <div class="top-actions" id="topActions">
       <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
-      <a href="#" class="btn btn-outline">My Requests</a>
+      <a href="my-requests.html" class="btn btn-outline">My Requests</a>
 
       <div class="user-box">
-        <div class="avatar">MS</div>
-        <div class="user-info">
-          <strong>Maria S.</strong>
-          <span>Student Organization Officer</span>
-        </div>
-      </div>
+        <div class="avatar" id="userAvatar">U</div>
+<div class="user-info">
+  <strong id="userName">User</strong>
+  <span id="userEmail">Student</span>
+</div>
 
       <a href="login.html" class="btn btn-outline">Sign Out</a>
     </div>
@@ -101,58 +101,15 @@
           <div class="venue-list">
             <div class="venue-item all">All Venues</div>
 
-            <label class="venue-item selected">
-              Amphitheater
-              <input type="radio" name="venue" checked>
-            </label>
-
-            <label class="venue-item">
-              Canteen
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Classroom
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Function Room (3rd Floor - Main Building)
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Function Room (12th Floor - Annex Building)
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Garden
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Multipurpose Hall
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              PE Area
-              <input type="radio" name="venue">
-            </label>
-
-            <label class="venue-item">
-              Social Hall
-              <input type="radio" name="venue">
-            </label>
-
-            <div class="venue-other">
-              <label>
-                <input type="radio" name="venue">
-                Others
-              </label>
-              <input type="text" placeholder="Please specify">
-            </div>
+            <label class="venue-item selected">Amphitheater <input type="radio" name="venue" checked></label>
+            <label class="venue-item">Canteen <input type="radio" name="venue"></label>
+            <label class="venue-item">Classroom <input type="radio" name="venue"></label>
+            <label class="venue-item">Function Room (3rd Floor - Main Building) <input type="radio" name="venue"></label>
+            <label class="venue-item">Function Room (12th Floor - Annex Building) <input type="radio" name="venue"></label>
+            <label class="venue-item">Garden <input type="radio" name="venue"></label>
+            <label class="venue-item">Multipurpose Hall <input type="radio" name="venue"></label>
+            <label class="venue-item">PE Area <input type="radio" name="venue"></label>
+            <label class="venue-item">Social Hall <input type="radio" name="venue"></label>
           </div>
 
           <div class="venue-preview">
@@ -167,7 +124,7 @@
                 </div>
               </div>
 
-              <button class="gallery-btn">View Gallery</button>
+              <button class="gallery-btn" type="button">View Gallery</button>
             </div>
 
             <div class="preview-details">
@@ -192,7 +149,7 @@
                 </div>
               </div>
 
-              <button class="small-btn">View Layout</button>
+              <button class="small-btn" type="button">View Layout</button>
             </div>
           </div>
 
@@ -214,9 +171,13 @@
         <div class="availability-grid">
           <div class="calendar-card">
             <div class="calendar-head">
-              <button class="icon-btn">&lt;</button>
-              <h4>April 2026</h4>
-              <button class="today-btn">Today</button>
+              <button class="icon-btn" id="prevMonth" type="button">&lt;</button>
+              <h4 id="monthYear">January 2026</h4>
+
+              <div style="display:flex; gap:10px;">
+                <button class="today-btn" type="button">Today</button>
+                <button class="icon-btn" id="nextMonth" type="button">&gt;</button>
+              </div>
             </div>
 
             <div class="weekdays">
@@ -229,95 +190,26 @@
               <span>SAT</span>
             </div>
 
-            <div class="days">
-              <span class="muted">29</span>
-              <span class="muted">30</span>
-              <span class="muted">31</span>
-              <span>1</span>
-              <span>2</span>
-              <span>3</span>
-              <span>4</span>
-
-              <span>5</span>
-              <span class="green selected-day">6</span>
-              <span class="green">7</span>
-              <span class="green">8</span>
-              <span>9</span>
-              <span>10</span>
-              <span>11</span>
-
-              <span>12</span>
-              <span>13</span>
-              <span>14</span>
-              <span>15</span>
-              <span class="red">16</span>
-              <span>17</span>
-              <span>18</span>
-
-              <span>19</span>
-              <span class="yellow">20</span>
-              <span>21</span>
-              <span>22</span>
-              <span>23</span>
-              <span>24</span>
-              <span>25</span>
-
-              <span>26</span>
-              <span>27</span>
-              <span>28</span>
-              <span>29</span>
-              <span>30</span>
-              <span class="muted">1</span>
-              <span class="muted">2</span>
-            </div>
+            <div class="days"></div>
           </div>
 
           <div class="slots-card">
             <div class="selected-date">
               <small>Selected Date</small>
-              <h4>April 6, 2026</h4>
+              <h4 id="selectedDateText">January 1, 2026</h4>
             </div>
 
             <p class="slots-title">Availability for Amphitheater</p>
 
-            <div class="slot">
-              <span>7:00 AM – 10:00 AM</span>
-              <span class="status available">Available</span>
-              <button>Select</button>
-            </div>
-
-            <div class="slot">
-              <span>10:00 AM – 1:00 PM</span>
-              <span class="status available">Available</span>
-              <button>Select</button>
-            </div>
-
-            <div class="slot">
-              <span>1:00 PM – 4:00 PM</span>
-              <span class="status pending">Pending</span>
-              <button>Select</button>
-            </div>
-
-            <div class="slot">
-              <span>4:00 PM – 7:00 PM</span>
-              <span class="status reserved">Reserved</span>
-              <button disabled>Unavailable</button>
-            </div>
-
-            <div class="slot">
-              <span>7:00 PM – 10:00 PM</span>
-              <span class="status available">Available</span>
-              <button>Select</button>
-            </div>
+            <div id="timeSlotsBox"></div>
           </div>
 
           <div class="side-panels">
             <div class="mini-card">
               <h4>Legend</h4>
-              <p><span class="dot green-dot"></span>Available</p>
-              <p><span class="dot red-dot"></span>Reserved</p>
-              <p><span class="dot yellow-dot"></span>Pending</p>
-              <p><span class="dot gray-dot"></span>Unavailable</p>
+              <p>Available = can select</p>
+              <p>Pending = waiting for admin approval</p>
+              <p>Approved = already reserved</p>
             </div>
 
             <div class="mini-card">
@@ -329,7 +221,7 @@
       </div>
 
       <div class="bottom-actions">
-        <button class="cancel-btn">Cancel</button>
+        <button class="cancel-btn" type="button">Cancel</button>
         <a href="details.html" class="next-btn">Next →</a>
       </div>
     </section>
@@ -422,18 +314,201 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const timeSlots = [
+    ["07:00:00", "10:00:00", "7:00 AM – 10:00 AM"],
+    ["10:00:00", "13:00:00", "10:00 AM – 1:00 PM"],
+    ["13:00:00", "16:00:00", "1:00 PM – 4:00 PM"],
+    ["16:00:00", "19:00:00", "4:00 PM – 7:00 PM"],
+    ["19:00:00", "22:00:00", "7:00 PM – 10:00 PM"]
+  ];
+
   let selectedVenue = "Amphitheater";
-  let selectedDateValue = "April 6, 2026";
+  let today = new Date();
+
+  if (today.getFullYear() < 2026) {
+    today = new Date(2026, 0, 1);
+  }
+
+  if (today.getFullYear() > 2100) {
+    today = new Date(2100, 11, 31);
+  }
+
+  let selectedDate = today;
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
   let selectedTime = "";
+  let monthStatuses = [];
 
-  const venueItems = document.querySelectorAll(".venue-list label.venue-item");
+  const daysContainer = document.querySelector(".days");
+  const selectedDateText = document.getElementById("selectedDateText");
+  const timeSlotsBox = document.getElementById("timeSlotsBox");
 
-  function getVenueName(label) {
-    return Array.from(label.childNodes)
-      .filter(node => node.nodeType === Node.TEXT_NODE)
-      .map(node => node.textContent.trim())
-      .join("")
-      .trim();
+  function formatDateForMySQL(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function formatDateLong(date) {
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  }
+
+  async function loadMonthStatuses() {
+    try {
+      const response = await fetch(
+        `api/get_month_status.php?venue=${encodeURIComponent(selectedVenue)}&year=${currentYear}&month=${currentMonth + 1}`
+      );
+
+      monthStatuses = await response.json();
+    } catch (error) {
+      monthStatuses = [];
+    }
+  }
+
+  function renderCalendar() {
+    document.getElementById("monthYear").textContent =
+      months[currentMonth] + " " + currentYear;
+
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    let html = "";
+
+    for (let i = 0; i < firstDay; i++) {
+      html += `<span class="muted"></span>`;
+    }
+
+    for (let day = 1; day <= totalDays; day++) {
+      const mysqlDate =
+        currentYear + "-" +
+        String(currentMonth + 1).padStart(2, "0") + "-" +
+        String(day).padStart(2, "0");
+
+      const found = monthStatuses.find(item => item.date === mysqlDate);
+
+      let statusClass = "";
+
+      if (found) {
+        const status = found.status.toLowerCase().trim();
+
+        if (status === "pending") {
+          statusClass = "day-pending";
+        }
+
+        if (status === "approved") {
+          statusClass = "day-approved";
+        }
+      }
+
+      const isSelected =
+        selectedDate.getFullYear() === currentYear &&
+        selectedDate.getMonth() === currentMonth &&
+        selectedDate.getDate() === day;
+
+      html += `
+        <span class="${isSelected ? "selected-day" : ""} ${statusClass}" data-day="${day}">
+          ${day}
+        </span>
+      `;
+    }
+
+    daysContainer.innerHTML = html;
+
+    document.querySelectorAll(".days span:not(.muted)").forEach(day => {
+      day.addEventListener("click", function () {
+        selectedDate = new Date(currentYear, currentMonth, Number(this.dataset.day));
+        selectedTime = "";
+
+        renderCalendar();
+        loadAvailability();
+      });
+    });
+
+    selectedDateText.textContent = formatDateLong(selectedDate);
+  }
+
+  async function loadAvailability() {
+    const mysqlDate = formatDateForMySQL(selectedDate);
+
+    document.querySelector(".slots-title").textContent =
+      "Availability for " + selectedVenue;
+
+    let reservations = [];
+
+    try {
+      const response = await fetch(
+        `api/get_availability.php?venue_name=${encodeURIComponent(selectedVenue)}&reservation_date=${encodeURIComponent(mysqlDate)}`
+      );
+
+      reservations = await response.json();
+    } catch (error) {
+      reservations = [];
+    }
+
+    let html = "";
+
+    timeSlots.forEach(slot => {
+      const found = reservations.find(item => item.time.trim() === slot[2].trim());
+
+      let statusText = "Available";
+      let statusClass = "available";
+      let buttonText = "Select";
+      let disabled = "";
+
+      if (found) {
+        const dbStatus = found.status.toLowerCase().trim();
+
+        if (dbStatus === "pending") {
+          statusText = "Pending";
+          statusClass = "pending";
+          buttonText = "Unavailable";
+          disabled = "disabled";
+        }
+
+        if (dbStatus === "approved") {
+          statusText = "Approved";
+          statusClass = "approved";
+          buttonText = "Unavailable";
+          disabled = "disabled";
+        }
+      }
+
+      html += `
+        <div class="slot">
+          <span>${slot[2]}</span>
+
+          <span class="${statusClass}">
+            ${statusText}
+          </span>
+
+          <button type="button" ${disabled} data-label="${slot[2]}" data-start="${slot[0]}" data-end="${slot[1]}">
+            ${buttonText}
+          </button>
+        </div>
+      `;
+    });
+
+    timeSlotsBox.innerHTML = html;
+
+    document.querySelectorAll("#timeSlotsBox button:not([disabled])").forEach(button => {
+      button.addEventListener("click", function () {
+        document.querySelectorAll("#timeSlotsBox button:not([disabled])").forEach(btn => {
+          btn.textContent = "Select";
+        });
+
+        this.textContent = "Selected";
+        selectedTime = this.dataset.label;
+
+        localStorage.setItem("reservationStartTime", this.dataset.start);
+        localStorage.setItem("reservationEndTime", this.dataset.end);
+      });
+    });
   }
 
   function updateVenue(name) {
@@ -441,6 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!venue) return;
 
     selectedVenue = name;
+    selectedTime = "";
 
     document.querySelector(".preview-icon").textContent = venue.icon;
     document.querySelector(".preview-overlay-top h4").textContent = name;
@@ -453,71 +529,134 @@ document.addEventListener("DOMContentLoaded", function () {
     meta[2].textContent = venue.features;
 
     document.querySelector(".preview-image img").src = venue.image;
-    document.querySelector(".slots-title").textContent = "Availability for " + name;
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
   }
 
-  venueItems.forEach(label => {
+  function getVenueName(label) {
+    return Array.from(label.childNodes)
+      .filter(node => node.nodeType === Node.TEXT_NODE)
+      .map(node => node.textContent.trim())
+      .join("")
+      .trim();
+  }
+
+  document.querySelectorAll(".venue-list label.venue-item").forEach(label => {
     label.addEventListener("click", function () {
-      venueItems.forEach(item => item.classList.remove("selected"));
+      document.querySelectorAll(".venue-list label.venue-item").forEach(item => {
+        item.classList.remove("selected");
+      });
+
       this.classList.add("selected");
 
       const radio = this.querySelector("input[type='radio']");
       if (radio) radio.checked = true;
 
-      const venueName = getVenueName(this);
-      updateVenue(venueName);
+      updateVenue(getVenueName(this));
     });
   });
 
-  const days = document.querySelectorAll(".days span");
-  const selectedDate = document.querySelector(".selected-date h4");
+  document.getElementById("prevMonth").addEventListener("click", function () {
+    currentMonth--;
 
-  days.forEach(day => {
-    day.addEventListener("click", function () {
-      if (this.classList.contains("muted")) return;
-
-      days.forEach(d => d.classList.remove("selected-day"));
-      this.classList.add("selected-day");
-
-      selectedDateValue = "April " + this.textContent.trim() + ", 2026";
-      selectedDate.textContent = selectedDateValue;
-    });
-  });
-
-  const slotButtons = document.querySelectorAll(".slot button");
-
-  slotButtons.forEach(button => {
-    if (!button.disabled) {
-      button.addEventListener("click", function () {
-        slotButtons.forEach(btn => {
-          if (!btn.disabled) btn.textContent = "Select";
-        });
-
-        this.textContent = "Selected";
-        selectedTime = this.closest(".slot").querySelector("span").textContent.trim();
-      });
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
     }
+
+    if (currentYear < 2026) {
+      currentYear = 2026;
+      currentMonth = 0;
+    }
+
+    selectedDate = new Date(currentYear, currentMonth, 1);
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  });
+
+  document.getElementById("nextMonth").addEventListener("click", function () {
+    currentMonth++;
+
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+
+    if (currentYear > 2100) {
+      currentYear = 2100;
+      currentMonth = 11;
+    }
+
+    selectedDate = new Date(currentYear, currentMonth, 1);
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  });
+
+  document.querySelector(".today-btn").addEventListener("click", function () {
+    let newToday = new Date();
+
+    if (newToday.getFullYear() < 2026) {
+      newToday = new Date(2026, 0, 1);
+    }
+
+    if (newToday.getFullYear() > 2100) {
+      newToday = new Date(2100, 11, 31);
+    }
+
+    currentMonth = newToday.getMonth();
+    currentYear = newToday.getFullYear();
+    selectedDate = newToday;
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
   });
 
   document.querySelector(".next-btn").addEventListener("click", function (e) {
-    const selectedDay = document.querySelector(".selected-day");
-
-    if (!selectedVenue || !selectedDay || !selectedTime) {
+    if (!selectedVenue || !selectedDate || !selectedTime) {
       e.preventDefault();
       alert("Please select venue, date, and time first.");
       return;
     }
 
     localStorage.setItem("reservationVenue", selectedVenue);
-    localStorage.setItem("reservationDate", selectedDateValue);
+    localStorage.setItem("reservationDate", formatDateLong(selectedDate));
+    localStorage.setItem("reservationDateMySQL", formatDateForMySQL(selectedDate));
     localStorage.setItem("reservationTime", selectedTime);
   });
 
-  updateVenue("Amphitheater");
+  loadMonthStatuses().then(() => {
+    renderCalendar();
+    updateVenue("Amphitheater");
+  });
 });
 
 function toggleMenu() {
   document.getElementById("topbar").classList.toggle("open");
+}
+const loggedName = localStorage.getItem("loggedInName");
+const loggedEmail = localStorage.getItem("loggedInEmail");
+
+if (loggedName) {
+  document.getElementById("userName").textContent = loggedName;
+  document.getElementById("userAvatar").textContent = loggedName.charAt(0).toUpperCase();
+}
+
+if (loggedEmail) {
+  document.getElementById("userEmail").textContent = loggedEmail;
 }
 </script>
 

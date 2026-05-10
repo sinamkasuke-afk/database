@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Requests</title>
+
+  <link rel="stylesheet" href="new-reservation.css">
+  <link rel="stylesheet" href="my-requests.css">
+</head>
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="nu-logo.png" alt="NU Logo" class="brand-logo-img">
+      <div class="brand-text">
+        <h1 class="nu-title">NATIONAL UNIVERSITY</h1>
+        <p class="nu-sub">FACILITIES RESERVATION SYSTEM</p>
+      </div>
+    </div>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+    <div class="top-actions" id="topActions">
+      <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+      <a href="my-requests.html" class="btn btn-outline">My Requests</a>
+      <a href="login.html" class="btn btn-outline" onclick="localStorage.clear()">Sign Out</a>
+
+      <div class="user-box">
+        <div class="avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <strong id="userName">User</strong>
+          <span id="userEmail">Student</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="my-page">
+  <section class="my-card">
+    <h1>My Requests</h1>
+    <p class="subtitle">Track your submitted facility reservation request.</p>
+
+    <div class="status-tabs">
+      <button class="tab-btn pending-tab active" onclick="showRequests('pending', this)">
+        Pending <span id="pendingCount">0</span>
+      </button>
+
+      <button class="tab-btn approved-tab" onclick="showRequests('approved', this)">
+        Approved <span id="approvedCount">0</span>
+      </button>
+
+      <button class="tab-btn declined-tab" onclick="showRequests('declined', this)">
+        Declined <span id="declinedCount">0</span>
+      </button>
+    </div>
+
+    <div class="request-table">
+      <div class="table-head">
+        <p>Request ID</p>
+        <p>Venue</p>
+        <p>Date</p>
+        <p>Time</p>
+        <p>Status</p>
+      </div>
+
+      <div id="requestRows"></div>
+    </div>
+  </section>
+</main>
+
+<script>
+let currentStatus = "pending";
+
+function loadUserInfo() {
+  const name = localStorage.getItem("loggedInName");
+  const email = localStorage.getItem("loggedInEmail");
+
+  if (name) {
+    document.getElementById("userName").textContent = name;
+    document.getElementById("userAvatar").textContent = name.charAt(0).toUpperCase();
+  }
+
+  if (email) {
+    document.getElementById("userEmail").textContent = email;
+  }
+}
+
+async function getRequests() {
+  const email = localStorage.getItem("loggedInEmail");
+
+  if (!email) {
+    return [];
+  }
+
+  const response = await fetch(
+    `api/get_my_requests.php?email=${encodeURIComponent(email)}`
+  );
+
+  return await response.json();
+}
+
+function badge(status) {
+  const cleanStatus = status.toLowerCase();
+
+  return `
+    <span class="status ${cleanStatus}">
+      ${cleanStatus.charAt(0).toUpperCase() + cleanStatus.slice(1)}
+    </span>
+  `;
+}
+
+async function updateCounts() {
+  const requests = await getRequests();
+
+  document.getElementById("pendingCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "pending").length;
+
+  document.getElementById("approvedCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "approved").length;
+
+  document.getElementById("declinedCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "declined").length;
+}
+
+async function renderRequests() {
+  const allRequests = await getRequests();
+
+  const requests = allRequests.filter(request => {
+    return request.status.toLowerCase() === currentStatus;
+  });
+
+  const requestRows = document.getElementById("requestRows");
+
+  if (requests.length === 0) {
+    requestRows.innerHTML = `
+      <div class="request-row">
+        <p class="empty-text">No ${currentStatus} requests yet.</p>
+      </div>
+    `;
+    return;
+  }
+
+  requestRows.innerHTML = requests.map((request, index) => `
+    <div class="request-row">
+      <p>
+        <strong>${request.id}</strong>
+        ${index === 0 ? `<small>Latest Request</small>` : ""}
+      </p>
+
+      <p>${request.venue}</p>
+      <p>${request.date}</p>
+      <p>${request.time}</p>
+      <p>${badge(request.status)}</p>
+    </div>
+  `).join("");
+}
+
+async function showRequests(status, button) {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
+
+  button.classList.add("active");
+  currentStatus = status;
+
+  await renderRequests();
+}
+
+function toggleMenu() {
+  document.getElementById("topbar").classList.toggle("open");
+}
+
+async function initMyRequests() {
+  loadUserInfo();
+  await updateCounts();
+  await renderRequests();
+}
+
+initMyRequests();
+</script>
+
+</body>
+</html>

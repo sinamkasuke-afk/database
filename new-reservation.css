@@ -937,3 +937,35 @@ a{text-decoration:none}
   grid-column:2; /* move to right side */
   margin-top:10px;
 }
+
+.available {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+.pending {
+  color: #f59e0b !important;
+  font-weight: 800 !important;
+}
+
+.approved {
+  color: #dc2626 !important;
+  font-weight: 800 !important;
+}
+
+.day-pending {
+  background: #f59e0b !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.day-approved {
+  background: #dc2626 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

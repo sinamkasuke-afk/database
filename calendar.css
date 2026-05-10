@@ -150,3 +150,49 @@
   }
 }
 
+.event {
+  background: #e8f1ff;
+  border-left: 4px solid #2f6fed;
+  color: #08285c;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.event.blue {
+  background: #e8f1ff;
+  border-left-color: #2f6fed;
+}
+
+.reserved-day{
+  background:#dbeafe;
+  border:2px solid #2563eb;
+}
+
+.reserved-day .day-number{
+  color:#0f172a;
+  font-weight:700;
+}
+
+.reserved-day {
+  background: #dbeafe;
+  border: 2px solid #0b2c6f;
+}
+
+.reserved-day span {
+  font-weight: 800;
+  color: #0b2c6f;
+}
+
+.event {
+  background: #e8f1ff;
+  border-left: 4px solid #0b2c6f;
+  color: #08285c;
+  padding: 8px;
+  margin-top: 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+}

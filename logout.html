@@ -9,7 +9,6 @@
 
 <style>
 
-/* RESET */
 *{
   margin:0;
   padding:0;
@@ -17,10 +16,9 @@
   font-family:'Inter',sans-serif;
 }
 
-/* BODY */
 body{
   display:flex;
-  height:100vh;
+  min-height:100vh;
   background:#f4f6fb;
 }
 
@@ -31,24 +29,42 @@ body{
   color:white;
   padding:20px;
   position:relative;
+  overflow:hidden;
 }
 
 .sidebar h2{
   margin-bottom:30px;
+  font-size:32px;
+  font-weight:700;
+  position:relative;
+  z-index:5;
 }
 
-.sidebar a{
+.sidebar button{
+  width:100%;
   display:block;
-  padding:12px;
+  padding:14px;
   margin:10px 0;
   color:white;
-  text-decoration:none;
-  border-radius:8px;
+  background:transparent;
+  border:none;
+  text-align:left;
+  border-radius:10px;
+  transition:0.2s;
+  font-size:18px;
+  cursor:pointer;
+  position:relative;
+  z-index:5;
 }
 
-.sidebar a.logout{
+.sidebar button:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+.sidebar button.logout{
   background:#f4b400;
   color:black;
+  font-weight:700;
 }
 
 /* GOLD CURVE */
@@ -61,6 +77,8 @@ body{
   height:100%;
   background:#f4b400;
   border-radius:50px;
+  pointer-events:none;
+  z-index:0;
 }
 
 /* MAIN */
@@ -69,55 +87,71 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+  padding:20px;
 }
 
-/* MODAL */
+/* LOGOUT BOX */
 .logout-box{
   background:white;
-  padding:30px;
-  border-radius:12px;
+  padding:40px;
+  border-radius:18px;
   text-align:center;
-  width:350px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.2);
+  width:380px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .logout-icon{
-  font-size:40px;
-  margin-bottom:10px;
+  font-size:55px;
+  margin-bottom:15px;
   color:#0a2a66;
 }
 
 .logout-box h2{
   margin-bottom:10px;
+  font-size:32px;
 }
 
 .logout-box p{
-  margin-bottom:20px;
+  margin-bottom:25px;
   color:#555;
+  font-size:17px;
+  line-height:1.5;
 }
 
 /* BUTTONS */
 .buttons{
   display:flex;
   justify-content:center;
-  gap:10px;
+  gap:12px;
 }
 
 .btn{
-  padding:10px 20px;
-  border-radius:8px;
+  padding:12px 24px;
+  border-radius:10px;
   text-decoration:none;
-  font-weight:600;
+  font-weight:700;
+  transition:0.2s;
+  border:none;
+  cursor:pointer;
 }
 
 .cancel{
   border:1px solid #ccc;
+  background:white;
   color:#333;
 }
 
-.logout{
+.cancel:hover{
+  background:#f2f2f2;
+}
+
+.logout-btn{
   background:#0a2a66;
   color:white;
+}
+
+.logout-btn:hover{
+  background:#143d8d;
 }
 
 </style>
@@ -127,32 +161,75 @@ body{
 
 <!-- SIDEBAR -->
 <div class="sidebar">
+
   <h2>NU Manila</h2>
 
-  <a href="#">Dashboard</a>
-  <a href="#">Reservation Requests</a>
-  <a href="#" class="logout">Logout</a>
+  <button onclick="goDashboard()">
+    Dashboard
+  </button>
+
+  <button onclick="goReservation()">
+    Reservation Requests
+  </button>
+
+  <button class="logout">
+    Logout
+  </button>
+
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div class="main">
 
-  <!-- LOGOUT MODAL -->
   <div class="logout-box">
 
     <div class="logout-icon">↪</div>
 
     <h2>Confirm Logout</h2>
-    <p>Are you sure you want to logout from your account?</p>
+
+    <p>
+      Are you sure you want to logout from your account?
+    </p>
 
     <div class="buttons">
-      <a href="admin-dashboard.html" class="btn cancel">Cancel</a>
-      <a href="login.html" class="btn logout">Logout</a>
+
+      <button
+        class="btn cancel"
+        onclick="goDashboard()">
+        Cancel
+      </button>
+
+      <button
+        class="btn logout-btn"
+        onclick="logoutUser()">
+        Logout
+      </button>
+
     </div>
 
   </div>
 
 </div>
+
+<script>
+
+function goDashboard(){
+  window.location.href = "dashboard.php";
+}
+
+function goReservation(){
+  window.location.href = "reservation.php";
+}
+
+function logoutUser(){
+
+  localStorage.clear();
+
+  window.location.href = "login.html";
+
+}
+
+</script>
 
 </body>
 </html>

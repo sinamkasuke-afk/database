@@ -36,3 +36,113 @@
   border: 2px solid rgba(255, 255, 255, 0.25);
 }
 
+/* FIX ADMIN PHP PAGE LAYOUT */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fc;
+}
+
+.sidebar {
+  width: 330px;
+  min-width: 330px;
+  background: #062b66;
+  color: white;
+  padding: 28px 26px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+.nu-logo {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.sidebar-bulldog img {
+  width: 130px;
+  opacity: 0.15;
+}
+
+.main-content {
+  margin-left: 330px;
+  width: calc(100% - 330px);
+  min-height: 100vh;
+  padding: 0;
+}
+
+.top-header {
+  height: 120px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 55px;
+  border-bottom: 1px solid #e5e9f2;
+}
+
+.dashboard-content {
+  padding: 45px 55px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.menu-item {
+  color: white;
+  text-decoration: none;
+  padding: 18px 20px;
+  border-radius: 10px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  font-weight: 700;
+}
+
+.menu-item.active {
+  background: #f7b718;
+}
+
+.table-wrapper {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #062b66;
+  color: white;
+}
+
+th, td {
+  padding: 18px;
+  text-align: left;
+  border-bottom: 1px solid #e5e9f2;
+}
+.available{
+  color:#16a34a;
+  font-weight:700;
+}
+
+.pending{
+  color:#f59e0b;
+  font-weight:700;
+}
+
+.approved{
+  color:#dc2626;
+  font-weight:700;
+}
