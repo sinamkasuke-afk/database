@@ -25,6 +25,7 @@
       padding: 34px 28px;
     }
 
+<<<<<<< HEAD
     .logout-icon {
       width: 56px;
       height: 56px;
@@ -76,6 +77,154 @@
       color: white;
     }
   </style>
+=======
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+}
+
+body{
+  display:flex;
+  min-height:100vh;
+  background:#f4f6fb;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:280px;
+  background:#0a2a66;
+  color:white;
+  padding:20px;
+  position:relative;
+  overflow:hidden;
+}
+
+.sidebar h2{
+  margin-bottom:30px;
+  font-size:32px;
+  font-weight:700;
+  position:relative;
+  z-index:5;
+}
+
+.sidebar button{
+  width:100%;
+  display:block;
+  padding:14px;
+  margin:10px 0;
+  color:white;
+  background:transparent;
+  border:none;
+  text-align:left;
+  border-radius:10px;
+  transition:0.2s;
+  font-size:18px;
+  cursor:pointer;
+  position:relative;
+  z-index:5;
+}
+
+.sidebar button:hover{
+  background:rgba(255,255,255,0.1);
+}
+
+.sidebar button.logout{
+  background:#f4b400;
+  color:black;
+  font-weight:700;
+}
+
+/* GOLD CURVE */
+.sidebar::after{
+  content:'';
+  position:absolute;
+  right:-40px;
+  top:0;
+  width:80px;
+  height:100%;
+  background:#f4b400;
+  border-radius:50px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* MAIN */
+.main{
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* LOGOUT BOX */
+.logout-box{
+  background:white;
+  padding:40px;
+  border-radius:18px;
+  text-align:center;
+  width:380px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+}
+
+.logout-icon{
+  font-size:55px;
+  margin-bottom:15px;
+  color:#0a2a66;
+}
+
+.logout-box h2{
+  margin-bottom:10px;
+  font-size:32px;
+}
+
+.logout-box p{
+  margin-bottom:25px;
+  color:#555;
+  font-size:17px;
+  line-height:1.5;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+}
+
+.btn{
+  padding:12px 24px;
+  border-radius:10px;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.2s;
+  border:none;
+  cursor:pointer;
+}
+
+.cancel{
+  border:1px solid #ccc;
+  background:white;
+  color:#333;
+}
+
+.cancel:hover{
+  background:#f2f2f2;
+}
+
+.logout-btn{
+  background:#0a2a66;
+  color:white;
+}
+
+.logout-btn:hover{
+  background:#143d8d;
+}
+
+</style>
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 </head>
 
 <body>
@@ -85,6 +234,7 @@
         <div class="logout-box">
           <div class="logout-icon">↪</div>
 
+<<<<<<< HEAD
           <h1>Confirm Logout</h1>
 
           <p>
@@ -97,6 +247,55 @@
           </div>
         </div>
       </section>
+=======
+<!-- SIDEBAR -->
+<div class="sidebar">
+
+  <h2>NU Manila</h2>
+
+  <button onclick="goDashboard()">
+    Dashboard
+  </button>
+
+  <button onclick="goReservation()">
+    Reservation Requests
+  </button>
+
+  <button class="logout">
+    Logout
+  </button>
+
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <div class="logout-box">
+
+    <div class="logout-icon">↪</div>
+
+    <h2>Confirm Logout</h2>
+
+    <p>
+      Are you sure you want to logout from your account?
+    </p>
+
+    <div class="buttons">
+
+      <button
+        class="btn cancel"
+        onclick="goDashboard()">
+        Cancel
+      </button>
+
+      <button
+        class="btn logout-btn"
+        onclick="logoutUser()">
+        Logout
+      </button>
+
+    </div>
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 
       <footer class="footer">
         © 2026 National University Manila<br>
@@ -105,9 +304,34 @@
     </main>
   </div>
 
+<<<<<<< HEAD
   <script src="app.js"></script>
   <script>
     initShell("logout");
   </script>
+=======
+</div>
+
+<script>
+
+function goDashboard(){
+  window.location.href = "dashboard.php";
+}
+
+function goReservation(){
+  window.location.href = "reservation.php";
+}
+
+function logoutUser(){
+
+  localStorage.clear();
+
+  window.location.href = "login.html";
+
+}
+
+</script>
+
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 </body>
 </html>

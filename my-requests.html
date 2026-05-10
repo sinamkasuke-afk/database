@@ -25,6 +25,7 @@
     <div class="top-actions" id="topActions">
       <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
       <a href="my-requests.html" class="btn btn-outline">My Requests</a>
+<<<<<<< HEAD
       <a href="login.html" class="btn btn-outline">Sign Out</a>
 
       <div class="user-box">
@@ -32,6 +33,15 @@
         <div class="user-info">
           <strong>Maria S.</strong>
           <span>Student Organization Officer</span>
+=======
+      <a href="login.html" class="btn btn-outline" onclick="localStorage.clear()">Sign Out</a>
+
+      <div class="user-box">
+        <div class="avatar" id="userAvatar">U</div>
+        <div class="user-info">
+          <strong id="userName">User</strong>
+          <span id="userEmail">Student</span>
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
         </div>
       </div>
     </div>
@@ -58,7 +68,10 @@
     </div>
 
     <div class="request-table">
+<<<<<<< HEAD
 
+=======
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
       <div class="table-head">
         <p>Request ID</p>
         <p>Venue</p>
@@ -68,7 +81,10 @@
       </div>
 
       <div id="requestRows"></div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
     </div>
   </section>
 </main>
@@ -76,6 +92,7 @@
 <script>
 let currentStatus = "pending";
 
+<<<<<<< HEAD
 function getRequests() {
   return JSON.parse(localStorage.getItem("reservationRequests")) || [];
 }
@@ -99,6 +116,66 @@ function updateCounts() {
 
 function renderRequests() {
   const requests = getRequests().filter(request => request.status === currentStatus);
+=======
+function loadUserInfo() {
+  const name = localStorage.getItem("loggedInName");
+  const email = localStorage.getItem("loggedInEmail");
+
+  if (name) {
+    document.getElementById("userName").textContent = name;
+    document.getElementById("userAvatar").textContent = name.charAt(0).toUpperCase();
+  }
+
+  if (email) {
+    document.getElementById("userEmail").textContent = email;
+  }
+}
+
+async function getRequests() {
+  const email = localStorage.getItem("loggedInEmail");
+
+  if (!email) {
+    return [];
+  }
+
+  const response = await fetch(
+    `api/get_my_requests.php?email=${encodeURIComponent(email)}`
+  );
+
+  return await response.json();
+}
+
+function badge(status) {
+  const cleanStatus = status.toLowerCase();
+
+  return `
+    <span class="status ${cleanStatus}">
+      ${cleanStatus.charAt(0).toUpperCase() + cleanStatus.slice(1)}
+    </span>
+  `;
+}
+
+async function updateCounts() {
+  const requests = await getRequests();
+
+  document.getElementById("pendingCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "pending").length;
+
+  document.getElementById("approvedCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "approved").length;
+
+  document.getElementById("declinedCount").textContent =
+    requests.filter(request => request.status.toLowerCase() === "declined").length;
+}
+
+async function renderRequests() {
+  const allRequests = await getRequests();
+
+  const requests = allRequests.filter(request => {
+    return request.status.toLowerCase() === currentStatus;
+  });
+
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
   const requestRows = document.getElementById("requestRows");
 
   if (requests.length === 0) {
@@ -116,6 +193,10 @@ function renderRequests() {
         <strong>${request.id}</strong>
         ${index === 0 ? `<small>Latest Request</small>` : ""}
       </p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
       <p>${request.venue}</p>
       <p>${request.date}</p>
       <p>${request.time}</p>
@@ -124,25 +205,44 @@ function renderRequests() {
   `).join("");
 }
 
+<<<<<<< HEAD
 function showRequests(status, button) {
   const buttons = document.querySelectorAll(".tab-btn");
 
   buttons.forEach(btn => {
+=======
+async function showRequests(status, button) {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
     btn.classList.remove("active");
   });
 
   button.classList.add("active");
   currentStatus = status;
 
+<<<<<<< HEAD
   renderRequests();
+=======
+  await renderRequests();
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 }
 
 function toggleMenu() {
   document.getElementById("topbar").classList.toggle("open");
 }
 
+<<<<<<< HEAD
 updateCounts();
 renderRequests();
+=======
+async function initMyRequests() {
+  loadUserInfo();
+  await updateCounts();
+  await renderRequests();
+}
+
+initMyRequests();
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 </script>
 
 </body>

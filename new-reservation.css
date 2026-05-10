@@ -938,7 +938,40 @@ a{text-decoration:none}
   margin-top:10px;
 }
 
+<<<<<<< HEAD
 .top-actions a{
   position:relative;
   z-index:999;
+=======
+.available {
+  color: #16a34a !important;
+  font-weight: 800 !important;
+}
+
+.pending {
+  color: #f59e0b !important;
+  font-weight: 800 !important;
+}
+
+.approved {
+  color: #dc2626 !important;
+  font-weight: 800 !important;
+}
+
+.day-pending {
+  background: #f59e0b !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+.day-approved {
+  background: #dc2626 !important;
+  color: white !important;
+  border-radius: 50%;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 }

@@ -5,11 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login - Facilities Reservation System</title>
 
+<<<<<<< HEAD
   <!-- SAME FONT AS ADMIN LOGIN -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@700&display=swap" rel="stylesheet">
+=======
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 
   <link rel="stylesheet" href="login.css">
 </head>
@@ -50,7 +57,10 @@
           <p>
             For assistance, contact the Physical Facilities Management Office.
           </p>
+<<<<<<< HEAD
 
+=======
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
         </div>
 
       </div>
@@ -83,8 +93,10 @@
 
         </div>
 
-        <form class="login-form" action="new-reservation.html">
+        <!-- LOGIN FORM -->
+        <form class="login-form" id="loginForm">
 
+<<<<<<< HEAD
           <label for="userType">
             User Type
           </label>
@@ -93,15 +105,34 @@
 
             <select id="userType" required>
 
+=======
+          <label for="userType">User Type</label>
+
+          <div class="input-wrap">
+
+            <select
+              id="userType"
+              name="role"
+              required
+            >
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
               <option selected disabled value="">
                 Select user type
               </option>
 
+<<<<<<< HEAD
               <option>
                 Student
               </option>
 
               <option>
+=======
+              <option value="student">
+                Student
+              </option>
+
+              <option value="employee">
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
                 Employee
               </option>
 
@@ -109,14 +140,22 @@
 
           </div>
 
+<<<<<<< HEAD
           <label for="email">
             Email Address
           </label>
+=======
+          <label for="email">Email Address</label>
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 
           <div class="input-wrap">
 
             <input
               id="email"
+<<<<<<< HEAD
+=======
+              name="email"
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
               type="email"
               placeholder="Enter your email"
               required
@@ -124,14 +163,22 @@
 
           </div>
 
+<<<<<<< HEAD
           <label for="password">
             Password
           </label>
+=======
+          <label for="password">Password</label>
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 
           <div class="input-wrap">
 
             <input
               id="password"
+<<<<<<< HEAD
+=======
+              name="password"
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
               type="password"
               placeholder="Enter your password"
               required
@@ -141,9 +188,14 @@
               class="eye-btn"
               type="button"
               onclick="togglePassword()"
+<<<<<<< HEAD
               id="toggleBtn"
             >
               Show
+=======
+            >
+              👁
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
             </button>
 
           </div>
@@ -177,6 +229,7 @@
     function togglePassword() {
 
       const password =
+<<<<<<< HEAD
         document.getElementById('password');
 
       const toggleBtn =
@@ -196,6 +249,74 @@
 
     }
 
+=======
+        document.getElementById("password");
+
+      password.type =
+        password.type === "password"
+        ? "text"
+        : "password";
+    }
+
+    document
+      .getElementById("loginForm")
+      .addEventListener("submit", async function(e) {
+
+      e.preventDefault();
+
+      const role =
+        document.getElementById("userType").value;
+
+      const email =
+        document.getElementById("email").value;
+
+      const password =
+        document.getElementById("password").value;
+
+      const formData = new FormData();
+
+      formData.append("role", role);
+      formData.append("email", email);
+      formData.append("password", password);
+
+      const response = await fetch(
+        "api/login.php",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        localStorage.setItem(
+          "loggedInEmail",
+          data.user.email
+        );
+
+        localStorage.setItem(
+          "loggedInName",
+          data.user.full_name
+        );
+
+        localStorage.setItem(
+          "loggedInRole",
+          data.user.role
+        );
+
+         window.location.href = "new-reservation.html";
+
+      } else {
+
+        alert(data.message);
+
+      }
+
+    });
+
+>>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
   </script>
 
 </body>

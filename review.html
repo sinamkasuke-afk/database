@@ -31,13 +31,11 @@
       <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
       <a href="#" class="btn btn-outline">My Requests</a>
 
-      <div class="user-box">
-        <div class="avatar">MS</div>
-        <div class="user-info">
-          <strong>Maria S.</strong>
-          <span>Student Organization Officer</span>
-        </div>
-      </div>
+      <div class="avatar" id="userAvatar">U</div>
+<div class="user-info">
+  <strong id="userName">User</strong>
+  <span id="userEmail">Student</span>
+</div>
 
       <a href="login.html" class="btn btn-outline">Sign Out</a>
     </div>
@@ -109,15 +107,15 @@
               <div class="info-grid three">
                 <div class="info-card">
                   <span class="label">Venue</span>
-                  <strong id="reviewVenue">Amphitheater</strong>
+                  <strong id="reviewVenue">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Date</span>
-                  <strong id="reviewDate">April 6, 2026</strong>
+                  <strong id="reviewDate">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Time</span>
-                  <strong id="reviewTime">7:00 AM - 10:00 AM</strong>
+                  <strong id="reviewTime">-</strong>
                 </div>
               </div>
             </div>
@@ -131,28 +129,25 @@
               <div class="info-grid two">
                 <div class="info-card">
                   <span class="label">Event Name</span>
-                  <strong id="reviewEventName">Leadership Seminar 2026</strong>
+                  <strong id="reviewEventName">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Organization / Department</span>
-                  <strong id="reviewOrganization">Student Council</strong>
+                  <strong id="reviewOrganization">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Event Type</span>
-                  <strong id="reviewEventType">Seminar</strong>
+                  <strong id="reviewEventType">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Expected Attendees</span>
-                  <strong id="reviewExpectedGuests">350</strong>
+                  <strong id="reviewExpectedGuests">-</strong>
                 </div>
               </div>
 
               <div class="info-card full">
                 <span class="label">Purpose of Event</span>
-                <p id="reviewPurpose">
-                  This seminar aims to orient student leaders on campus policies,
-                  leadership responsibilities, and organizational planning for the academic year.
-                </p>
+                <p id="reviewPurpose">-</p>
               </div>
             </div>
 
@@ -162,15 +157,15 @@
               <div class="info-grid three">
                 <div class="info-card">
                   <span class="label">Contact Person</span>
-                  <strong id="reviewContactPerson">Maria Santos</strong>
+                  <strong id="reviewContactPerson">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Email Address</span>
-                  <strong id="reviewContactEmail">maria.santos@nu.edu.ph</strong>
+                  <strong id="reviewContactEmail">-</strong>
                 </div>
                 <div class="info-card">
                   <span class="label">Contact Number</span>
-                  <strong id="reviewContactNumber">0917 123 4567</strong>
+                  <strong id="reviewContactNumber">-</strong>
                 </div>
               </div>
             </div>
@@ -179,19 +174,12 @@
               <h4>Facility Requirements</h4>
 
               <div class="tags-wrap" id="reviewRequirements">
-                <span class="req-tag">Chairs</span>
-                <span class="req-tag">Tables</span>
-                <span class="req-tag">Sound System</span>
-                <span class="req-tag">Projector</span>
-                <span class="req-tag">Microphones</span>
+                <span class="req-tag">None</span>
               </div>
 
               <div class="info-card full">
                 <span class="label">Additional Setup Notes</span>
-                <p id="reviewSetupNotes">
-                  Classroom-style seating arrangement near the front, projector facing center stage,
-                  and at least 3 microphones available for speakers and moderators.
-                </p>
+                <p id="reviewSetupNotes">-</p>
               </div>
             </div>
 
@@ -202,12 +190,12 @@
                 <div class="file-left">
                   <div class="file-icon">📄</div>
                   <div>
-                    <strong id="reviewSupportingDocument">leadership-seminar-program.pdf</strong>
+                    <strong id="reviewSupportingDocument">No file uploaded</strong>
                     <p>Uploaded supporting document</p>
                   </div>
                 </div>
 
-                <button class="download-btn">View File</button>
+                <button class="download-btn" type="button">View File</button>
               </div>
             </div>
           </div>
@@ -218,22 +206,22 @@
 
               <div class="summary-row">
                 <span>Venue</span>
-                <strong id="sideVenue">Amphitheater</strong>
+                <strong id="sideVenue">-</strong>
               </div>
 
               <div class="summary-row">
                 <span>Date</span>
-                <strong id="sideDate">April 6, 2026</strong>
+                <strong id="sideDate">-</strong>
               </div>
 
               <div class="summary-row">
                 <span>Time</span>
-                <strong id="sideTime">7:00 AM - 10:00 AM</strong>
+                <strong id="sideTime">-</strong>
               </div>
 
               <div class="summary-row">
                 <span>Attendees</span>
-                <strong id="sideAttendees">350</strong>
+                <strong id="sideAttendees">-</strong>
               </div>
 
               <div class="summary-row">
@@ -251,7 +239,7 @@
             </div>
 
             <label class="confirm-box">
-              <input type="checkbox">
+              <input type="checkbox" id="confirmCheck">
               <span>
                 I confirm that all information is true and complete, and I understand that submission does not guarantee automatic approval.
               </span>
@@ -262,7 +250,9 @@
 
       <div class="page-actions">
         <a href="details.html" class="cancel-btn">← Back</a>
-        <a href="success.html" class="submit-btn">Submit Reservation</a>
+        <button type="button" class="submit-btn" id="submitReservationBtn">
+          Submit Reservation
+        </button>
       </div>
     </section>
   </div>
@@ -270,62 +260,181 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const venue = localStorage.getItem("reservationVenue");
-  const date = localStorage.getItem("reservationDate");
-  const time = localStorage.getItem("reservationTime");
+  const venue = localStorage.getItem("reservationVenue") || "";
+  const date = localStorage.getItem("reservationDate") || "";
+  const time = localStorage.getItem("reservationTime") || "";
 
-  const eventName = localStorage.getItem("eventName");
-  const organization = localStorage.getItem("organization");
-  const eventType = localStorage.getItem("eventType");
-  const expectedGuests = localStorage.getItem("expectedGuests");
-  const purpose = localStorage.getItem("purpose");
-  const contactPerson = localStorage.getItem("contactPerson");
-  const contactEmail = localStorage.getItem("contactEmail");
-  const contactNumber = localStorage.getItem("contactNumber");
-  const setupNotes = localStorage.getItem("setupNotes");
-  const supportingDocument = localStorage.getItem("supportingDocument");
+  const eventName = localStorage.getItem("eventName") || "";
+  const organization = localStorage.getItem("organization") || "";
+  const eventType = localStorage.getItem("eventType") || "";
+  const expectedGuests = localStorage.getItem("expectedGuests") || "";
+  const purpose = localStorage.getItem("purpose") || "";
+  const contactPerson = localStorage.getItem("contactPerson") || "";
+  const contactEmail = localStorage.getItem("contactEmail") || "";
+  const contactNumber = localStorage.getItem("contactNumber") || "";
+  const setupNotes = localStorage.getItem("setupNotes") || "";
+  const supportingDocument = localStorage.getItem("supportingDocument") || "";
   const requirements = JSON.parse(localStorage.getItem("facilityRequirements") || "[]");
 
-  if (venue) {
-    document.getElementById("reviewVenue").textContent = venue;
-    document.getElementById("sideVenue").textContent = venue;
+  function setText(id, value) {
+    document.getElementById(id).textContent = value || "-";
   }
 
-  if (date) {
-    document.getElementById("reviewDate").textContent = date;
-    document.getElementById("sideDate").textContent = date;
-  }
+  setText("reviewVenue", venue);
+  setText("sideVenue", venue);
+  setText("reviewDate", date);
+  setText("sideDate", date);
+  setText("reviewTime", time);
+  setText("sideTime", time);
+  setText("reviewEventName", eventName);
+  setText("reviewOrganization", organization);
+  setText("reviewEventType", eventType);
+  setText("reviewExpectedGuests", expectedGuests);
+  setText("sideAttendees", expectedGuests);
+  setText("reviewPurpose", purpose);
+  setText("reviewContactPerson", contactPerson);
+  setText("reviewContactEmail", contactEmail);
+  setText("reviewContactNumber", contactNumber);
+  setText("reviewSetupNotes", setupNotes);
+  setText("reviewSupportingDocument", supportingDocument || "No file uploaded");
 
-  if (time) {
-    document.getElementById("reviewTime").textContent = time;
-    document.getElementById("sideTime").textContent = time;
-  }
-
-  if (eventName) document.getElementById("reviewEventName").textContent = eventName;
-  if (organization) document.getElementById("reviewOrganization").textContent = organization;
-  if (eventType) document.getElementById("reviewEventType").textContent = eventType;
-  if (expectedGuests) {
-    document.getElementById("reviewExpectedGuests").textContent = expectedGuests;
-    document.getElementById("sideAttendees").textContent = expectedGuests;
-  }
-  if (purpose) document.getElementById("reviewPurpose").textContent = purpose;
-  if (contactPerson) document.getElementById("reviewContactPerson").textContent = contactPerson;
-  if (contactEmail) document.getElementById("reviewContactEmail").textContent = contactEmail;
-  if (contactNumber) document.getElementById("reviewContactNumber").textContent = contactNumber;
-  if (setupNotes) document.getElementById("reviewSetupNotes").textContent = setupNotes;
-  if (supportingDocument) document.getElementById("reviewSupportingDocument").textContent = supportingDocument;
+  const requirementsBox = document.getElementById("reviewRequirements");
+  requirementsBox.innerHTML = "";
 
   if (requirements.length > 0) {
-    const requirementsBox = document.getElementById("reviewRequirements");
-    requirementsBox.innerHTML = "";
-
     requirements.forEach(req => {
       const span = document.createElement("span");
       span.className = "req-tag";
       span.textContent = req;
       requirementsBox.appendChild(span);
     });
+  } else {
+    requirementsBox.innerHTML = `<span class="req-tag">None</span>`;
   }
+
+  function convertDateToMysql(dateText) {
+    const dateObj = new Date(dateText);
+
+    if (isNaN(dateObj.getTime())) {
+      return "";
+    }
+
+    const year = dateObj.getFullYear();
+    const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+    const day = String(dateObj.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function convertTimeToMysql(timeText) {
+    const cleanTime = timeText.trim();
+    const dateObj = new Date("January 1, 2000 " + cleanTime);
+
+    if (isNaN(dateObj.getTime())) {
+      return "";
+    }
+
+    const hours = String(dateObj.getHours()).padStart(2, "0");
+    const minutes = String(dateObj.getMinutes()).padStart(2, "0");
+
+    return `${hours}:${minutes}:00`;
+  }
+
+  function splitTimeRange(timeText) {
+    return timeText
+      .replaceAll("–", "-")
+      .replaceAll("—", "-")
+      .split("-");
+  }
+
+  document.getElementById("submitReservationBtn").addEventListener("click", function () {
+    const confirmCheck = document.getElementById("confirmCheck");
+
+    if (!confirmCheck.checked) {
+      alert("Please confirm the checkbox before submitting.");
+      return;
+    }
+
+    const latestVenue = localStorage.getItem("reservationVenue") || "";
+    const latestDate = localStorage.getItem("reservationDate") || "";
+    const latestTime = localStorage.getItem("reservationTime") || "";
+
+    const latestEventName = localStorage.getItem("eventName") || "";
+    const latestOrganization = localStorage.getItem("organization") || "";
+    const latestEventType = localStorage.getItem("eventType") || "";
+    const latestExpectedGuests = localStorage.getItem("expectedGuests") || "";
+    const latestPurpose = localStorage.getItem("purpose") || "";
+    const latestContactPerson = localStorage.getItem("contactPerson") || "";
+    const latestContactEmail =
+  localStorage.getItem("loggedInEmail") ||
+  localStorage.getItem("contactEmail") ||
+  "";
+    const latestContactNumber = localStorage.getItem("contactNumber") || "";
+    const latestSetupNotes = localStorage.getItem("setupNotes") || "";
+    const latestSupportingDocument = localStorage.getItem("supportingDocument") || "";
+    const latestRequirements = JSON.parse(localStorage.getItem("facilityRequirements") || "[]");
+
+    if (!latestVenue || !latestDate || !latestTime || !latestEventName || !latestOrganization || !latestContactPerson || !latestContactEmail) {
+      alert("Some reservation information is missing. Please go back and complete the form.");
+      return;
+    }
+
+    const timeParts = splitTimeRange(latestTime);
+
+    if (timeParts.length < 2) {
+      alert("Invalid time format. Please go back and select a time slot again.");
+      return;
+    }
+
+   const reservationDate =
+  localStorage.getItem("reservationDateMySQL") || convertDateToMysql(latestDate);
+
+const startTime =
+  localStorage.getItem("reservationStartTime") || convertTimeToMysql(timeParts[0]);
+
+const endTime =
+  localStorage.getItem("reservationEndTime") || convertTimeToMysql(timeParts[1]);
+
+    if (!reservationDate || !startTime || !endTime) {
+      alert("Invalid date or time. Please go back and select again.");
+      return;
+    }
+
+    const formData = new FormData();
+
+    formData.append("venue_name", latestVenue);
+    formData.append("event_name", latestEventName);
+    formData.append("organization", latestOrganization);
+    formData.append("event_type", latestEventType);
+    formData.append("expected_guests", latestExpectedGuests || "0");
+    formData.append("purpose", latestPurpose);
+    formData.append("contact_person", latestContactPerson);
+    formData.append("contact_email", latestContactEmail);
+    formData.append("contact_number", latestContactNumber);
+    formData.append("reservation_date", reservationDate);
+    formData.append("start_time", startTime);
+    formData.append("end_time", endTime);
+    formData.append("facility_requirements", latestRequirements.join(", "));
+    formData.append("setup_notes", latestSetupNotes);
+    formData.append("supporting_document", latestSupportingDocument);
+
+    fetch("api/create_reservation.php", {
+      method: "POST",
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        window.location.href = "success.html";
+      } else {
+        alert(data.message || "Failed to submit reservation.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert("Something went wrong. Check your PHP file or database connection.");
+    });
+  });
 });
 
 function toggleMenu() {
