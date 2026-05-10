@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Reservation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="new-reservation.css">
+</head>
+
+<body>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img src="nu-logo.png" alt="NU Logo" class="brand-logo-img">
+
+      <div class="brand-text">
+        <h1 class="nu-title">NATIONAL UNIVERSITY</h1>
+        <p class="nu-sub">FACILITIES RESERVATION SYSTEM</p>
+      </div>
+    </div>
+
+    <button class="menu-toggle" type="button" onclick="toggleMenu()">☰</button>
+
+    <div class="top-actions" id="topActions">
+      <a href="new-reservation.html" class="btn btn-gold">+ New Reservation</a>
+      <a href="my-requests.html" class="btn btn-outline">My Requests</a>
+
+      <div class="user-box">
+        <div class="avatar" id="userAvatar">U</div>
+<div class="user-info">
+  <strong id="userName">User</strong>
+  <span id="userEmail">Student</span>
+</div>
+
+      <a href="login.html" class="btn btn-outline">Sign Out</a>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <div class="page-head">
+    <h2>New Reservation</h2>
+
+    <div class="step-top">
+      <div class="step active"><span>1</span> Venue & Date</div>
+      <div class="line"></div>
+      <div class="step"><span>2</span> Details</div>
+      <div class="line"></div>
+      <div class="step"><span>3</span> Review</div>
+    </div>
+  </div>
+
+  <div class="page-layout">
+    <aside class="sidebar-steps">
+      <div class="side-step active">
+        <div class="circle">1</div>
+        <div>
+          <h3>Venue & Date</h3>
+          <p>Choose venue and check availability</p>
+        </div>
+      </div>
+
+      <div class="side-line"></div>
+
+      <div class="side-step">
+        <div class="circle muted">2</div>
+        <div>
+          <h3>Details</h3>
+          <p>Provide event information</p>
+        </div>
+      </div>
+
+      <div class="side-line"></div>
+
+      <div class="side-step">
+        <div class="circle muted">3</div>
+        <div>
+          <h3>Review</h3>
+          <p>Confirm and submit your reservation</p>
+        </div>
+      </div>
+    </aside>
+
+    <section class="content">
+      <div class="card">
+        <div class="card-head">
+          <div class="num">1</div>
+          <div>
+            <h3>Venue Selection</h3>
+            <p>Choose the facility you wish to reserve.</p>
+          </div>
+        </div>
+
+        <div class="venue-grid">
+          <div class="venue-list">
+            <div class="venue-item all">All Venues</div>
+
+            <label class="venue-item selected">Amphitheater <input type="radio" name="venue" checked></label>
+            <label class="venue-item">Canteen <input type="radio" name="venue"></label>
+            <label class="venue-item">Classroom <input type="radio" name="venue"></label>
+            <label class="venue-item">Function Room (3rd Floor - Main Building) <input type="radio" name="venue"></label>
+            <label class="venue-item">Function Room (12th Floor - Annex Building) <input type="radio" name="venue"></label>
+            <label class="venue-item">Garden <input type="radio" name="venue"></label>
+            <label class="venue-item">Multipurpose Hall <input type="radio" name="venue"></label>
+            <label class="venue-item">PE Area <input type="radio" name="venue"></label>
+            <label class="venue-item">Social Hall <input type="radio" name="venue"></label>
+          </div>
+
+          <div class="venue-preview">
+            <div class="preview-image">
+              <img src="Amphitheater.jpg" alt="Venue photo">
+
+              <div class="preview-overlay-top">
+                <div class="preview-icon">A</div>
+                <div>
+                  <h4>Amphitheater</h4>
+                  <span class="tag">Outdoor Venue</span>
+                </div>
+              </div>
+
+              <button class="gallery-btn" type="button">View Gallery</button>
+            </div>
+
+            <div class="preview-details">
+              <p class="preview-desc">
+                Open-air venue ideal for large gatherings, presentations, and performances.
+              </p>
+
+              <div class="preview-meta">
+                <div>
+                  <strong>Capacity</strong>
+                  <span>2,000 pax</span>
+                </div>
+
+                <div>
+                  <strong>Location</strong>
+                  <span>Main Campus</span>
+                </div>
+
+                <div>
+                  <strong>Features</strong>
+                  <span>Stage, Sound System, Lighting, Open Seating</span>
+                </div>
+              </div>
+
+              <button class="small-btn" type="button">View Layout</button>
+            </div>
+          </div>
+
+          <div class="note-box">
+            <strong>Note:</strong> Submit this form together with the layout of the venue (if applicable) to the Physical Facilities Management Office.
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="num">2</div>
+          <div>
+            <h3>Venue Availability</h3>
+            <p>Select the date and time to check availability.</p>
+          </div>
+        </div>
+
+        <div class="availability-grid">
+          <div class="calendar-card">
+            <div class="calendar-head">
+              <button class="icon-btn" id="prevMonth" type="button">&lt;</button>
+              <h4 id="monthYear">January 2026</h4>
+
+              <div style="display:flex; gap:10px;">
+                <button class="today-btn" type="button">Today</button>
+                <button class="icon-btn" id="nextMonth" type="button">&gt;</button>
+              </div>
+            </div>
+
+            <div class="weekdays">
+              <span>SUN</span>
+              <span>MON</span>
+              <span>TUE</span>
+              <span>WED</span>
+              <span>THU</span>
+              <span>FRI</span>
+              <span>SAT</span>
+            </div>
+
+            <div class="days"></div>
+          </div>
+
+          <div class="slots-card">
+            <div class="selected-date">
+              <small>Selected Date</small>
+              <h4 id="selectedDateText">January 1, 2026</h4>
+            </div>
+
+            <p class="slots-title">Availability for Amphitheater</p>
+
+            <div id="timeSlotsBox"></div>
+          </div>
+
+          <div class="side-panels">
+            <div class="mini-card">
+              <h4>Legend</h4>
+              <p>Available = can select</p>
+              <p>Pending = waiting for admin approval</p>
+              <p>Approved = already reserved</p>
+            </div>
+
+            <div class="mini-card">
+              <h4>Tips</h4>
+              <p>Click on a date to see available time slots.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-actions">
+        <button class="cancel-btn" type="button">Cancel</button>
+        <a href="details.html" class="next-btn">Next →</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  localStorage.removeItem("currentTicketNumber");
+
+  const venueData = {
+    "Amphitheater": {
+      icon: "A",
+      type: "Outdoor Venue",
+      desc: "Open-air venue ideal for large gatherings, presentations, and performances.",
+      capacity: "2,000 pax",
+      location: "Main Campus",
+      features: "Stage, Sound System, Lighting, Open Seating",
+      image: "Amphitheater.jpg"
+    },
+    "Canteen": {
+      icon: "C",
+      type: "Dining Venue",
+      desc: "Indoor dining venue for food events and gatherings.",
+      capacity: "300 pax",
+      location: "Main Campus",
+      features: "Tables, Chairs, Food Stalls",
+      image: "Canteen.jpg"
+    },
+    "Classroom": {
+      icon: "C",
+      type: "Academic Venue",
+      desc: "Classroom venue suitable for lectures, seminars, and workshops.",
+      capacity: "40 pax",
+      location: "Academic Building",
+      features: "Projector, Whiteboard, Chairs",
+      image: "Classroom.jpg"
+    },
+    "Function Room (3rd Floor - Main Building)": {
+      icon: "F",
+      type: "Function Room",
+      desc: "Indoor venue for meetings, trainings, programs, and formal events.",
+      capacity: "120 pax",
+      location: "3rd Floor - Main Building",
+      features: "Projector, Sound System, Air-conditioning",
+      image: "Function3rd.jpg"
+    },
+    "Function Room (12th Floor - Annex Building)": {
+      icon: "F",
+      type: "Function Room",
+      desc: "Annex function room for seminars, workshops, and organization events.",
+      capacity: "100 pax",
+      location: "12th Floor - Annex Building",
+      features: "Projector, Chairs, Air-conditioning",
+      image: "Function12th.jpg"
+    },
+    "Garden": {
+      icon: "G",
+      type: "Outdoor Venue",
+      desc: "Open outdoor space suitable for casual events, gatherings, and ceremonies.",
+      capacity: "150 pax",
+      location: "Main Campus",
+      features: "Open Area, Natural Lighting, Seating",
+      image: "Garden.jpg"
+    },
+    "Multipurpose Hall": {
+      icon: "M",
+      type: "Event Venue",
+      desc: "Flexible venue for programs, assemblies, meetings, and school events.",
+      capacity: "500 pax",
+      location: "Main Campus",
+      features: "Stage, Chairs, Sound System",
+      image: "Multipurpose_Hall.jpg"
+    },
+    "PE Area": {
+      icon: "P",
+      type: "Sports Area",
+      desc: "Physical education area for sports activities and outdoor exercises.",
+      capacity: "200 pax",
+      location: "PE Area",
+      features: "Open Court, Sports Space",
+      image: "PE_Area.jpg"
+    },
+    "Social Hall": {
+      icon: "S",
+      type: "Social Venue",
+      desc: "Venue suitable for social gatherings, student organization events, and programs.",
+      capacity: "250 pax",
+      location: "Main Campus",
+      features: "Tables, Chairs, Sound System",
+      image: "SocialHall.jpg"
+    }
+  };
+
+  const months = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+  ];
+
+  const timeSlots = [
+    ["07:00:00", "10:00:00", "7:00 AM – 10:00 AM"],
+    ["10:00:00", "13:00:00", "10:00 AM – 1:00 PM"],
+    ["13:00:00", "16:00:00", "1:00 PM – 4:00 PM"],
+    ["16:00:00", "19:00:00", "4:00 PM – 7:00 PM"],
+    ["19:00:00", "22:00:00", "7:00 PM – 10:00 PM"]
+  ];
+
+  let selectedVenue = "Amphitheater";
+  let today = new Date();
+
+  if (today.getFullYear() < 2026) {
+    today = new Date(2026, 0, 1);
+  }
+
+  if (today.getFullYear() > 2100) {
+    today = new Date(2100, 11, 31);
+  }
+
+  let selectedDate = today;
+  let currentMonth = today.getMonth();
+  let currentYear = today.getFullYear();
+  let selectedTime = "";
+  let monthStatuses = [];
+
+  const daysContainer = document.querySelector(".days");
+  const selectedDateText = document.getElementById("selectedDateText");
+  const timeSlotsBox = document.getElementById("timeSlotsBox");
+
+  function formatDateForMySQL(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  function formatDateLong(date) {
+    return `${months[date.getMonth()]} ${date.getDate()}, ${date.getFullYear()}`;
+  }
+
+  async function loadMonthStatuses() {
+    try {
+      const response = await fetch(
+        `api/get_month_status.php?venue=${encodeURIComponent(selectedVenue)}&year=${currentYear}&month=${currentMonth + 1}`
+      );
+
+      monthStatuses = await response.json();
+    } catch (error) {
+      monthStatuses = [];
+    }
+  }
+
+  function renderCalendar() {
+    document.getElementById("monthYear").textContent =
+      months[currentMonth] + " " + currentYear;
+
+    const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+    const totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+    let html = "";
+
+    for (let i = 0; i < firstDay; i++) {
+      html += `<span class="muted"></span>`;
+    }
+
+    for (let day = 1; day <= totalDays; day++) {
+      const mysqlDate =
+        currentYear + "-" +
+        String(currentMonth + 1).padStart(2, "0") + "-" +
+        String(day).padStart(2, "0");
+
+      const found = monthStatuses.find(item => item.date === mysqlDate);
+
+      let statusClass = "";
+
+      if (found) {
+        const status = found.status.toLowerCase().trim();
+
+        if (status === "pending") {
+          statusClass = "day-pending";
+        }
+
+        if (status === "approved") {
+          statusClass = "day-approved";
+        }
+      }
+
+      const isSelected =
+        selectedDate.getFullYear() === currentYear &&
+        selectedDate.getMonth() === currentMonth &&
+        selectedDate.getDate() === day;
+
+      html += `
+        <span class="${isSelected ? "selected-day" : ""} ${statusClass}" data-day="${day}">
+          ${day}
+        </span>
+      `;
+    }
+
+    daysContainer.innerHTML = html;
+
+    document.querySelectorAll(".days span:not(.muted)").forEach(day => {
+      day.addEventListener("click", function () {
+        selectedDate = new Date(currentYear, currentMonth, Number(this.dataset.day));
+        selectedTime = "";
+
+        renderCalendar();
+        loadAvailability();
+      });
+    });
+
+    selectedDateText.textContent = formatDateLong(selectedDate);
+  }
+
+  async function loadAvailability() {
+    const mysqlDate = formatDateForMySQL(selectedDate);
+
+    document.querySelector(".slots-title").textContent =
+      "Availability for " + selectedVenue;
+
+    let reservations = [];
+
+    try {
+      const response = await fetch(
+        `api/get_availability.php?venue_name=${encodeURIComponent(selectedVenue)}&reservation_date=${encodeURIComponent(mysqlDate)}`
+      );
+
+      reservations = await response.json();
+    } catch (error) {
+      reservations = [];
+    }
+
+    let html = "";
+
+    timeSlots.forEach(slot => {
+      const found = reservations.find(item => item.time.trim() === slot[2].trim());
+
+      let statusText = "Available";
+      let statusClass = "available";
+      let buttonText = "Select";
+      let disabled = "";
+
+      if (found) {
+        const dbStatus = found.status.toLowerCase().trim();
+
+        if (dbStatus === "pending") {
+          statusText = "Pending";
+          statusClass = "pending";
+          buttonText = "Unavailable";
+          disabled = "disabled";
+        }
+
+        if (dbStatus === "approved") {
+          statusText = "Approved";
+          statusClass = "approved";
+          buttonText = "Unavailable";
+          disabled = "disabled";
+        }
+      }
+
+      html += `
+        <div class="slot">
+          <span>${slot[2]}</span>
+
+          <span class="${statusClass}">
+            ${statusText}
+          </span>
+
+          <button type="button" ${disabled} data-label="${slot[2]}" data-start="${slot[0]}" data-end="${slot[1]}">
+            ${buttonText}
+          </button>
+        </div>
+      `;
+    });
+
+    timeSlotsBox.innerHTML = html;
+
+    document.querySelectorAll("#timeSlotsBox button:not([disabled])").forEach(button => {
+      button.addEventListener("click", function () {
+        document.querySelectorAll("#timeSlotsBox button:not([disabled])").forEach(btn => {
+          btn.textContent = "Select";
+        });
+
+        this.textContent = "Selected";
+        selectedTime = this.dataset.label;
+
+        localStorage.setItem("reservationStartTime", this.dataset.start);
+        localStorage.setItem("reservationEndTime", this.dataset.end);
+      });
+    });
+  }
+
+  function updateVenue(name) {
+    const venue = venueData[name];
+    if (!venue) return;
+
+    selectedVenue = name;
+    selectedTime = "";
+
+    document.querySelector(".preview-icon").textContent = venue.icon;
+    document.querySelector(".preview-overlay-top h4").textContent = name;
+    document.querySelector(".preview-overlay-top .tag").textContent = venue.type;
+    document.querySelector(".preview-desc").textContent = venue.desc;
+
+    const meta = document.querySelectorAll(".preview-meta span");
+    meta[0].textContent = venue.capacity;
+    meta[1].textContent = venue.location;
+    meta[2].textContent = venue.features;
+
+    document.querySelector(".preview-image img").src = venue.image;
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  }
+
+  function getVenueName(label) {
+    return Array.from(label.childNodes)
+      .filter(node => node.nodeType === Node.TEXT_NODE)
+      .map(node => node.textContent.trim())
+      .join("")
+      .trim();
+  }
+
+  document.querySelectorAll(".venue-list label.venue-item").forEach(label => {
+    label.addEventListener("click", function () {
+      document.querySelectorAll(".venue-list label.venue-item").forEach(item => {
+        item.classList.remove("selected");
+      });
+
+      this.classList.add("selected");
+
+      const radio = this.querySelector("input[type='radio']");
+      if (radio) radio.checked = true;
+
+      updateVenue(getVenueName(this));
+    });
+  });
+
+  document.getElementById("prevMonth").addEventListener("click", function () {
+    currentMonth--;
+
+    if (currentMonth < 0) {
+      currentMonth = 11;
+      currentYear--;
+    }
+
+    if (currentYear < 2026) {
+      currentYear = 2026;
+      currentMonth = 0;
+    }
+
+    selectedDate = new Date(currentYear, currentMonth, 1);
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  });
+
+  document.getElementById("nextMonth").addEventListener("click", function () {
+    currentMonth++;
+
+    if (currentMonth > 11) {
+      currentMonth = 0;
+      currentYear++;
+    }
+
+    if (currentYear > 2100) {
+      currentYear = 2100;
+      currentMonth = 11;
+    }
+
+    selectedDate = new Date(currentYear, currentMonth, 1);
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  });
+
+  document.querySelector(".today-btn").addEventListener("click", function () {
+    let newToday = new Date();
+
+    if (newToday.getFullYear() < 2026) {
+      newToday = new Date(2026, 0, 1);
+    }
+
+    if (newToday.getFullYear() > 2100) {
+      newToday = new Date(2100, 11, 31);
+    }
+
+    currentMonth = newToday.getMonth();
+    currentYear = newToday.getFullYear();
+    selectedDate = newToday;
+    selectedTime = "";
+
+    loadMonthStatuses().then(() => {
+      renderCalendar();
+      loadAvailability();
+    });
+  });
+
+  document.querySelector(".next-btn").addEventListener("click", function (e) {
+    if (!selectedVenue || !selectedDate || !selectedTime) {
+      e.preventDefault();
+      alert("Please select venue, date, and time first.");
+      return;
+    }
+
+    localStorage.setItem("reservationVenue", selectedVenue);
+    localStorage.setItem("reservationDate", formatDateLong(selectedDate));
+    localStorage.setItem("reservationDateMySQL", formatDateForMySQL(selectedDate));
+    localStorage.setItem("reservationTime", selectedTime);
+  });
+
+  loadMonthStatuses().then(() => {
+    renderCalendar();
+    updateVenue("Amphitheater");
+  });
+});
+
+function toggleMenu() {
+  document.getElementById("topbar").classList.toggle("open");
+}
+const loggedName = localStorage.getItem("loggedInName");
+const loggedEmail = localStorage.getItem("loggedInEmail");
+
+if (loggedName) {
+  document.getElementById("userName").textContent = loggedName;
+  document.getElementById("userAvatar").textContent = loggedName.charAt(0).toUpperCase();
+}
+
+if (loggedEmail) {
+  document.getElementById("userEmail").textContent = loggedEmail;
+}
+</script>
+
+</body>
+</html>
