@@ -41,11 +41,7 @@
   color: white;
 }
 
-<<<<<<< HEAD
-.table-wrap {
-  overflow-x: auto;
-=======
-/* FIX ADMIN PHP PAGE LAYOUT */
+/* ADMIN PHP PAGE LAYOUT */
 .dashboard-container {
   display: flex;
   min-height: 100vh;
@@ -119,12 +115,13 @@
   background: #f7b718;
 }
 
+.table-wrap,
 .table-wrapper {
   background: white;
   border-radius: 8px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   margin-top: 30px;
->>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
 }
 
 table {
@@ -132,7 +129,18 @@ table {
   border-collapse: collapse;
 }
 
-<<<<<<< HEAD
+thead {
+  background: #062b66;
+  color: white;
+}
+
+th,
+td {
+  padding: 18px;
+  text-align: left;
+  border-bottom: 1px solid #e5e9f2;
+}
+
 th {
   white-space: nowrap;
 }
@@ -197,29 +205,18 @@ td b {
 .pagination {
   border-top: 1px solid #edf0f5;
 }
-=======
-thead {
-  background: #062b66;
-  color: white;
+
+.available {
+  color: #16a34a;
+  font-weight: 700;
 }
 
-th, td {
-  padding: 18px;
-  text-align: left;
-  border-bottom: 1px solid #e5e9f2;
-}
-.available{
-  color:#16a34a;
-  font-weight:700;
+.pending {
+  color: #f59e0b;
+  font-weight: 700;
 }
 
-.pending{
-  color:#f59e0b;
-  font-weight:700;
+.approved {
+  color: #dc2626;
+  font-weight: 700;
 }
-
-.approved{
-  color:#dc2626;
-  font-weight:700;
-}
->>>>>>> a6ab38942165d404817bf5b226fc07a76793d6c3
