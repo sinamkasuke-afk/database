@@ -1,4 +1,4 @@
-// Icon definitions for navigation and UI elements
+
 const ICONS = {
   dashboard: '<svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5v8a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H4.5A1.5 1.5 0 0 1 3 19.5v-8Z"/></svg>',
 
@@ -11,7 +11,6 @@ const ICONS = {
   logout: '<svg viewBox="0 0 24 24"><path d="M4 4h9v2H6v12h7v2H4V4Zm12.6 4.4L22 14l-5.4 5.6-1.4-1.4L18.1 15H10v-2h8.1l-2.9-3.2 1.4-1.4Z"/></svg>'
 };
 
-// GET DATA
 function getData() {
 
   let d = localStorage.getItem('nuRequests');
@@ -23,12 +22,10 @@ function getData() {
   return JSON.parse(d);
 }
 
-// SAVE DATA
 function saveData(d) {
   localStorage.setItem('nuRequests', JSON.stringify(d));
 }
 
-// COUNTS
 function counts() {
 
   let d = getData();
@@ -41,14 +38,12 @@ function counts() {
   };
 }
 
-// BADGE
 function badge(s) {
   return `<span class="badge ${s}">
     ${s[0].toUpperCase() + s.slice(1)}
   </span>`;
 }
 
-// SIDEBAR
 function sidebar(active) {
 
   return `<aside class="sidebar">
@@ -113,7 +108,6 @@ function sidebar(active) {
   </aside>`;
 }
 
-// TOPBAR
 function topbar() {
 
   return `<header class="topbar">
@@ -136,8 +130,6 @@ function topbar() {
 
   </header>`;
 }
-
-// INIT SHELL
 function initShell(active) {
 
   document.querySelector('.layout')

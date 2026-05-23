@@ -21,8 +21,6 @@ body{
 
 a{text-decoration:none}
 
-/* ===== SAME HEADER AND 3-LINE ACTION FROM NEW RESERVATION ===== */
-
 .topbar{
   background:var(--navy);
   padding:0;

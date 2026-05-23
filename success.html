@@ -8,13 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Merriweather:wght@700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
 
-  <!-- IMPORTANT: use SAME CSS as new-reservation -->
   <link rel="stylesheet" href="new-reservation.css">
   <link rel="stylesheet" href="success.css">
 </head>
 <body>
 
-<!-- ✅ COPIED HEADER EXACTLY -->
 <header class="topbar" id="topbar">
   <div class="topbar-inner">
     <div class="brand">
@@ -60,7 +58,6 @@
       Ticket No: <strong id="ticket-number"></strong>
     </p>
 
-    <!-- SUMMARY -->
     <div class="summary-box">
       <h3>Reservation Summary</h3>
 
@@ -91,7 +88,6 @@
 
 <script src="tix.js"></script>
 
-<!-- ✅ REQUIRED SCRIPT (for ☰ to work) -->
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const venue = localStorage.getItem("reservationVenue");
