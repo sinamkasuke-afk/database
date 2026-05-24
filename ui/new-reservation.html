@@ -218,47 +218,84 @@
 
             <label class="venue-item selected">
               Amphitheater
-              <input type="radio" name="venue" checked>
+              <input
+                type="radio"
+                name="venue"
+                value="Amphitheater"
+                checked
+              >
             </label>
 
             <label class="venue-item">
               Canteen
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Canteen"
+              >
             </label>
 
             <label class="venue-item">
               Classroom
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Classroom"
+              >
             </label>
 
             <label class="venue-item">
               Function Room (3rd Floor - Main Building)
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Function Room (3rd Floor - Main Building)"
+              >
             </label>
 
             <label class="venue-item">
               Function Room (12th Floor - Annex Building)
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Function Room (12th Floor - Annex Building)"
+              >
             </label>
 
             <label class="venue-item">
               Garden
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Garden"
+              >
             </label>
 
             <label class="venue-item">
               Multipurpose Hall
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Multipurpose Hall"
+              >
             </label>
 
             <label class="venue-item">
               PE Area
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="PE Area"
+              >
             </label>
 
             <label class="venue-item">
               Social Hall
-              <input type="radio" name="venue">
+              <input
+                type="radio"
+                name="venue"
+                value="Social Hall"
+              >
             </label>
 
           </div>
@@ -344,7 +381,7 @@
             <strong>Note:</strong>
 
             Submit this form together with the layout
-            of the venue (if applicable) to the
+            of the venue if applicable to the
             Physical Facilities Management Office.
 
           </div>
@@ -531,6 +568,371 @@ if (loggedEmail) {
     loggedEmail;
 
 }
+
+const venues = {
+  "Amphitheater": {
+    image: "Amphitheater.jpg",
+    title: "Amphitheater",
+    type: "Outdoor Venue",
+    description: "Open-air venue ideal for large gatherings, presentations, and performances.",
+    capacity: "2,000 pax",
+    location: "Main Campus",
+    features: "Stage, Sound System, Lighting, Open Seating",
+    icon: "A"
+  },
+
+  "Canteen": {
+    image: "Canteen.jpg",
+    title: "Canteen",
+    type: "Dining Venue",
+    description: "Spacious dining area suitable for food-related events and student gatherings.",
+    capacity: "500 pax",
+    location: "Ground Floor",
+    features: "Dining Area, Tables, Chairs",
+    icon: "C"
+  },
+
+  "Classroom": {
+    image: "Classroom.jpg",
+    title: "Classroom",
+    type: "Academic Venue",
+    description: "Ideal for lectures, meetings, and classroom activities.",
+    capacity: "50 pax",
+    location: "Main Building",
+    features: "Projector, Chairs, Aircon",
+    icon: "CR"
+  },
+
+  "Function Room (3rd Floor - Main Building)": {
+    image: "Function3rd.jpg",
+    title: "Function Room",
+    type: "Indoor Venue",
+    description: "Perfect for seminars, meetings, and workshops.",
+    capacity: "150 pax",
+    location: "3rd Floor Main Building",
+    features: "Projector, Stage, Aircon",
+    icon: "F"
+  },
+
+  "Function Room (12th Floor - Annex Building)": {
+    image: "function12th.jpg",
+    title: "Function Room",
+    type: "Indoor Venue",
+    description: "Modern function room for formal events and presentations.",
+    capacity: "200 pax",
+    location: "12th Floor Annex",
+    features: "LED Screen, Aircon, Tables",
+    icon: "F"
+  },
+
+  "Garden": {
+    image: "Garden.jpg",
+    title: "Garden",
+    type: "Outdoor Venue",
+    description: "Relaxing outdoor space for social activities and events.",
+    capacity: "300 pax",
+    location: "Campus Garden",
+    features: "Open Space, Landscaping",
+    icon: "G"
+  },
+
+  "Multipurpose Hall": {
+    image: "Multipurpose_Hall.jpg",
+    title: "Multipurpose Hall",
+    type: "Indoor Venue",
+    description: "Large indoor hall for university events and sports.",
+    capacity: "1000 pax",
+    location: "Sports Complex",
+    features: "Stage, Court, Lighting",
+    icon: "M"
+  },
+
+  "PE Area": {
+    image: "PE_Area.jpg",
+    title: "PE Area",
+    type: "Sports Venue",
+    description: "Open sports area for PE classes and athletic events.",
+    capacity: "400 pax",
+    location: "PE Department",
+    features: "Court, Open Area",
+    icon: "PE"
+  },
+
+  "Social Hall": {
+    image: "SocialHall.jpg",
+    title: "Social Hall",
+    type: "Event Venue",
+    description: "Elegant venue for celebrations and university functions.",
+    capacity: "600 pax",
+    location: "Annex Building",
+    features: "Lighting, Stage, Aircon",
+    icon: "S"
+  }
+};
+
+const venueItems =
+  document.querySelectorAll(".venue-item input");
+
+const previewImage =
+  document.querySelector(".preview-image img");
+
+const previewTitle =
+  document.querySelector(".preview-overlay-top h4");
+
+const previewType =
+  document.querySelector(".preview-overlay-top .tag");
+
+const previewDesc =
+  document.querySelector(".preview-desc");
+
+const previewCapacity =
+  document.querySelectorAll(".preview-meta span")[0];
+
+const previewLocation =
+  document.querySelectorAll(".preview-meta span")[1];
+
+const previewFeatures =
+  document.querySelectorAll(".preview-meta span")[2];
+
+const previewIcon =
+  document.querySelector(".preview-icon");
+
+function updateVenue(name) {
+
+  const venue =
+    venues[name];
+
+  if (!venue) {
+    return;
+  }
+
+  previewImage.src =
+    venue.image;
+
+  previewTitle.textContent =
+    venue.title;
+
+  previewType.textContent =
+    venue.type;
+
+  previewDesc.textContent =
+    venue.description;
+
+  previewCapacity.textContent =
+    venue.capacity;
+
+  previewLocation.textContent =
+    venue.location;
+
+  previewFeatures.textContent =
+    venue.features;
+
+  previewIcon.textContent =
+    venue.icon;
+
+}
+
+venueItems.forEach(input => {
+
+  input.addEventListener("change", function () {
+
+    document
+      .querySelectorAll(".venue-item")
+      .forEach(item => {
+        item.classList.remove("selected");
+      });
+
+    this.parentElement.classList.add("selected");
+
+    const venueName =
+      this.value;
+
+    updateVenue(venueName);
+
+  });
+
+});
+
+</script>
+<script>
+
+const monthYear =
+  document.getElementById("monthYear");
+
+const daysContainer =
+  document.querySelector(".days");
+
+const selectedDateText =
+  document.getElementById("selectedDateText");
+
+const timeSlotsBox =
+  document.getElementById("timeSlotsBox");
+
+const slotsTitle =
+  document.querySelector(".slots-title");
+
+const prevMonthBtn =
+  document.getElementById("prevMonth");
+
+const nextMonthBtn =
+  document.getElementById("nextMonth");
+
+let currentDate = new Date();
+
+let selectedVenue = "Amphitheater";
+
+function renderCalendar(date) {
+
+  daysContainer.innerHTML = "";
+
+  const year = date.getFullYear();
+
+  const month = date.getMonth();
+
+  const firstDay =
+    new Date(year, month, 1).getDay();
+
+  const totalDays =
+    new Date(year, month + 1, 0).getDate();
+
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  monthYear.textContent =
+    `${monthNames[month]} ${year}`;
+
+  for (let i = 0; i < firstDay; i++) {
+
+    const empty =
+      document.createElement("div");
+
+    empty.classList.add("empty-day");
+
+    daysContainer.appendChild(empty);
+
+  }
+
+  for (let day = 1; day <= totalDays; day++) {
+
+    const dayBtn =
+      document.createElement("button");
+
+    dayBtn.classList.add("day-btn");
+
+    dayBtn.textContent = day;
+
+    dayBtn.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".day-btn")
+        .forEach(btn => {
+          btn.classList.remove("selected");
+        });
+
+      dayBtn.classList.add("selected");
+
+      selectedDateText.textContent =
+        `${monthNames[month]} ${day}, ${year}`;
+
+      renderSlots(selectedVenue);
+
+    });
+
+    daysContainer.appendChild(dayBtn);
+
+  }
+
+}
+
+function renderSlots(venue) {
+
+  slotsTitle.textContent =
+    `Availability for ${venue}`;
+
+  timeSlotsBox.innerHTML = "";
+
+  const slots = [
+    "7:00 AM - 9:00 AM",
+    "9:00 AM - 11:00 AM",
+    "11:00 AM - 1:00 PM",
+    "1:00 PM - 3:00 PM",
+    "3:00 PM - 5:00 PM"
+  ];
+
+  slots.forEach(slot => {
+
+    const btn =
+      document.createElement("button");
+
+    btn.classList.add("slot-btn");
+
+    btn.textContent = slot;
+
+    btn.addEventListener("click", () => {
+
+      document
+        .querySelectorAll(".slot-btn")
+        .forEach(s => {
+          s.classList.remove("active");
+        });
+
+      btn.classList.add("active");
+
+    });
+
+    timeSlotsBox.appendChild(btn);
+
+  });
+
+}
+
+prevMonthBtn.addEventListener("click", () => {
+
+  currentDate.setMonth(
+    currentDate.getMonth() - 1
+  );
+
+  renderCalendar(currentDate);
+
+});
+
+nextMonthBtn.addEventListener("click", () => {
+
+  currentDate.setMonth(
+    currentDate.getMonth() + 1
+  );
+
+  renderCalendar(currentDate);
+
+});
+
+venueItems.forEach(input => {
+
+  input.addEventListener("change", function () {
+
+    selectedVenue = this.value;
+
+    renderSlots(selectedVenue);
+
+  });
+
+});
+
+renderCalendar(currentDate);
+
+renderSlots(selectedVenue);
 
 </script>
 
